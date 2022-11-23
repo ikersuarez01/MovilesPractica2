@@ -29,7 +29,7 @@ class _InicioState extends State<Inicio>{
   Widget build(BuildContext context){
     return Scaffold(//estructura pantalla: AppBar y body
       body: Center(
-          child: Text("Aquí va la foto de inicio")),
+          child: portada()),
     );
   }
 }
@@ -43,7 +43,7 @@ Widget portada(){
       onPressed: (){
         //aquí lo que ocurra al pulsar
       },
-      child: Text('Michial'/*, style: TextStyle(color: Color),*/),
+      child: Text('APLASMICHIS'/*, style: TextStyle(color: Color),*/),
     )),
   );
 }
