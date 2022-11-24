@@ -51,6 +51,7 @@ Widget portada(BuildContext context){
               context,
               MaterialPageRoute(builder: (context) => login()),
             );
+            const Text("AplastaMichis");
           },
         child: Image.asset("assets/logo.png")
         ,
