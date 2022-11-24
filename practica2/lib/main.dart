@@ -52,11 +52,13 @@ Widget portada(BuildContext context){
               MaterialPageRoute(builder: (context) => login()),
             );
           },
-        child: Container(
-                decoration: BoxDecoration(
-                  image: DecorationImage(image: AssetImage('assets/logo.png'), //aquí va la imagen de fondo
-                  fit: BoxFit.cover)),
-                  child: Text("Aplastamichis"),
+        child: Column(
+          children: [
+            SizedBox(
+              child: Image.asset("assets/logo.png"),
+            ),
+            Text("Aplastamichis"),],
+
         ),
          ),
          ),
