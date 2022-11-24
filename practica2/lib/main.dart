@@ -43,7 +43,7 @@ Widget portada(){
       onPressed: (){
         //aquí lo que ocurra al pulsar
       },
-      child: Text('APLASMICHIS'/*, style: TextStyle(color: Color),*/),
-    )),
-  );
-}
+      child: Text('APLASMICHIS'/*, style: TextStyle(color: Color),*/))));
+
+
+      }
