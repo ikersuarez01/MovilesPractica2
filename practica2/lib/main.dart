@@ -54,10 +54,8 @@ Widget portada(BuildContext context){
           },
         child: Column(
           children: [
-            SizedBox(
-              child: Image.asset("assets/logo.png"),
-            ),
-            Text("Aplastamichis"),],
+            Center(child: Image.asset("assets/logo.png"),),
+],
 
         ),
          ),
