@@ -38,18 +38,28 @@ class _InicioState extends State<Inicio>{
 
 Widget portada(BuildContext context){
   return Container(
-    //decoration: BoxDecoration(
-    // image: DecorationImage(image: AssetImage('url')), //aquí va la imagen de fondo
-    // fit: BoxFit.cover)
-    child: Center(child: TextButton(
-      onPressed: (){
-        //aquí lo que ocurra al pulsar
-         Navigator.push(
+    decoration: BoxDecoration(
+      image: DecorationImage(image: AssetImage('assets/fondoinicio.png'), //aquí va la imagen de fondo
+      fit: BoxFit.cover)),
+    //child: AssetImage('assets/fondoinicio.png'),
+    child: 
+      Center(
+        child: TextButton(
+          onPressed: (){
+            //aquí lo que ocurra al pulsar
+            Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => login()),
             );
-      },
-      child: Text('APLASMICHIS'/*, style: TextStyle(color: Color),*/))));
-
+          },
+        child: Container(
+                decoration: BoxDecoration(
+                  image: DecorationImage(image: AssetImage('assets/logo.png'), //aquí va la imagen de fondo
+                  fit: BoxFit.cover)),
+                  child: Text("Aplastamichis"),
+        ),
+         ),
+         ),
+          );
 
       }
