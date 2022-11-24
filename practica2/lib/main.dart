@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:practica2/login.dart';
 
+//PANTALLA DE INICIO
 void main() {
   runApp(const MyApp());
 }
