@@ -44,7 +44,28 @@ Widget portada(BuildContext context){
     //child: AssetImage('assets/fondoinicio.png'),
     child: 
       Center(
-        child: TextButton(
+        child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset('logo.png'),
+            OutlinedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => login()),
+            );
+              },
+              child: Text("JUGAR"),
+            )
+          ],
+        )
+         ),
+         );
+
+
+      }
+
+/*TextButton(
           onPressed: (){
             //aquí lo que ocurra al pulsar
             Navigator.push(
@@ -57,9 +78,4 @@ Widget portada(BuildContext context){
         ,
 
 
-        ),
-         ),
-         );
-
-
-      }
+        )*/
