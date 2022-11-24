@@ -37,7 +37,7 @@ Widget _userTF() {
   return StreamBuilder(
       builder: (BuildContext context, AsyncSnapshot snapshot) {
         return Container(
-            padding: EdgeInsets.symmetric(horizontal: 20.0),
+            padding: EdgeInsets.symmetric(horizontal: 10.0),
             child: TextField(
               keyboardType: TextInputType.name,
             decoration: InputDecoration(
