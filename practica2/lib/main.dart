@@ -46,7 +46,7 @@ Widget portada(BuildContext context){
         //aquí lo que ocurra al pulsar
          Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => const login()),
+              MaterialPageRoute(builder: (context) => login()),
             );
       },
       child: Text('APLASMICHIS'/*, style: TextStyle(color: Color),*/))));

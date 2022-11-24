@@ -1,16 +1,26 @@
 import 'package:flutter/material.dart';
 
-class login extends StatelessWidget{
-  const login ({super.key});
+class login extends StatefulWidget{
+  login({super.key});
 
   @override
-  Widget build (BuildContext context){
-    return Scaffold(
-    appBar: AppBar(
-    title: Text("xd")
-    ),
-    );
+  _loginState createState() => _loginState();
+}
 
+class _loginState extends State<login>{
+  @override
+  Widget build(BuildContext context){
+    return Scaffold(//estructura pantalla: AppBar y body
+      body: Center(
+          child: portadaLogin(context)),
+    );
   }
 }
+Widget portadaLogin(BuildContext context){
+  return Container();
+
+
+}
+
+
 
