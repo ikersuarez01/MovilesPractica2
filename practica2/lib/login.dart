@@ -22,14 +22,35 @@ Widget portadaLogin(BuildContext context){
       body: Center(
         child: Column(
           children:[
-
-          ]
+            Image.asset('assets/login_gato_saludando.png'),
+            SizedBox(height:20.0), _userTF(),
+          ],
         )
       )
   )
   );
 
 
+}
+
+Widget _userTF() {
+  return StreamBuilder(
+      builder: (BuildContext context, AsyncSnapshot snapshot) {
+        return Container(
+            padding: EdgeInsets.symmetric(horizontal: 20.0),
+            child: TextField(
+              keyboardType: TextInputType.name,
+            decoration: InputDecoration(
+              icon: Image.asset('assets/logo.png',scale: 5.0),
+              hintText: 'MichiTraviesa',
+              labelText: 'USERNAME',
+
+        ),
+        ),
+
+        );
+      }
+  );
 }
 
 
