@@ -52,14 +52,13 @@ Widget portada(BuildContext context){
               MaterialPageRoute(builder: (context) => login()),
             );
           },
-        child: Column(
-          children: [
-            Center(child: Image.asset("assets/logo.png"),),
-],
+        child: Image.asset("assets/logo.png")
+        ,
+
 
         ),
          ),
-         ),
-          );
+         );
+
 
       }
