@@ -17,7 +17,17 @@ class _loginState extends State<login>{
   }
 }
 Widget portadaLogin(BuildContext context){
-  return Container();
+  return Container(
+    child: Scaffold(
+      body: Center(
+        child: Column(
+          children:[
+
+          ]
+        )
+      )
+  )
+  );
 
 
 }
