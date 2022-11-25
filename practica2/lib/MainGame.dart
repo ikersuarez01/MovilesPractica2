@@ -15,7 +15,7 @@ var boxOpened = 'assets/closed.png';
 
 int numBoxes = 9;
 
-List<bool> isClosed = List<bool>.generate(numBoxes, (index) => true, growable: false);
+List<int> boxList = List<int>.generate(numBoxes, (index) => 0, growable: false);
 var random = Random();
 
 int puntuacion = 0;
@@ -62,15 +62,62 @@ class _InicioState extends State<Inicio> {
 
     //#region Timer
 
+    int aux = 0;
+    int aux2 = 0;
+    bool secondBox = false;
+    void CajaRandom(int aux){
+
+    }
+
     @override
     void initState() {
       super.initState();
+
+      Timer(Duration(seconds: 10),(){
+        setState(() {
+          secondBox = true;
+        });
+      });
       final periodicTimer = Timer.periodic(
         Duration(seconds: random.nextInt(3)),
             (Timer t) {
               setState(() {
-                isClosed[random.nextInt(8)] = false;
+                if(boxList[aux] == 1){
+                  RestaVida();
+                }
+                boxList[aux] = 0;
+                aux = random.nextInt(9);
+                int a = random.nextInt(100);
+                if(a <= 65){
+                  boxList[aux] = 1;
+                } else if(a <= 95){
+                  boxList[aux] = 2;
+                }else if(a <= 100){
+                  boxList[aux] = 3;
+                }
               });
+        },
+      );
+      final periodicTimer2 = Timer.periodic(
+        Duration(seconds: random.nextInt(4)),
+            (Timer t) {
+          setState(() {
+            if(secondBox){
+              if(boxList[aux2] == 1){
+                RestaVida();
+              }
+              boxList[aux2] = 0;
+              aux2 = random.nextInt(9);
+              int a = random.nextInt(100);
+              if(a <= 65){
+                boxList[aux2] = 1;
+              } else if(a <= 95){
+                boxList[aux2] = 2;
+              }else if(a <= 100){
+                boxList[aux2] = 3;
+              }
+            }
+          });
         },
       );
     }
@@ -79,15 +126,62 @@ class _InicioState extends State<Inicio> {
 
     //#region Cambiar el sprite de la caja
 
-    void ChangeBoxSprite(int boolIndex){
+    void ChangeBoxSprite(int index){
       setState(() {
-        if(!isClosed[boolIndex]) {
-          isClosed[boolIndex] = true;
-          puntuacion++;
+        switch(boxList[index]){
+          case 0: {
+
+          }
+          break;
+          case 1: {
+            puntuacion++;
+            boxList[index] = 0;
+          }
+          break;
+          case 2:{
+            RestaVida();
+            boxList[index] = 0;
+          }
+          break;
+          case 3:{
+            SumaVida();
+            boxList[index]= 0;
+          }
+          break;
         }
       });
     }
 
+    //#endregion
+
+    //#region Poner imagen
+    Widget setImage(int index){
+      switch(boxList[index]){
+        case 0:{
+          return Image(
+              image: AssetImage('assets/CajaCerrada.png'));
+        }
+        break;
+        case 1:{
+          return Image(
+              image: AssetImage('assets/CajaAbierta.png'));
+        }
+        break;
+        case 2:{
+          return Image(
+              image: AssetImage('assets/Perro.png'));
+        }
+        break;
+        case 3:{
+          return Image(
+              image: AssetImage('assets/Pez.png'));
+        }
+        break;
+      }
+      return Image(
+          image: AssetImage('assets/5.png'));
+
+    }
     //#endregion
 
     //#region Creador de cajas
@@ -100,9 +194,7 @@ class _InicioState extends State<Inicio> {
         child: Container(
             height: boxHeight,
             width: boxWidth,
-            child: isClosed[boxIndex]
-                ?Image.asset('assets/closed.png')
-                :Image.asset('assets/open.png')
+            child: setImage(boxIndex)
         ),
       );
     }
@@ -125,6 +217,25 @@ class _InicioState extends State<Inicio> {
 
     //endregion
 
+    //#region Sumar  y restar vidas
+
+    void SumaVida(){
+      if(vidas >= 3){
+        return;
+      } else {
+        vidas++;
+      }
+    }
+
+    void RestaVida(){
+      if(vidas <= 0){
+        print('HAS MUERTO');
+      } else {
+        vidas--;
+      }
+    }
+    //#endregion
+
   //#endregion
 
   //#region Body y AppBar
@@ -138,7 +249,7 @@ class _InicioState extends State<Inicio> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Container(
-              child: Text('$puntuacion'),
+              child: Text('score: $puntuacion || vidas: $vidas'),
             ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
