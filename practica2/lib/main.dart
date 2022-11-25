@@ -47,7 +47,7 @@ Widget portada(BuildContext context){
         child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            OutlinedButton(
+            TextButton(
               onPressed: () {
                 Navigator.push(
                   context,
