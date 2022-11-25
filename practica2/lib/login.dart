@@ -48,7 +48,7 @@ Widget body(){
 
 }
 
-Widget username(){
+/*Widget username(){
       return Container(
 
         child: Text("Inicia Sesión",
@@ -60,7 +60,7 @@ Widget username(){
   ),
   );
 
-}
+}*/
 
 Widget usernameSpace(){
   return Container(
