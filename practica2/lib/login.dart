@@ -29,13 +29,9 @@ Widget body(){
     ),
       child: Center(
         child: Column(
-          mainAxisAlignment :MainAxisAlignment.center,
+          mainAxisAlignment :MainAxisAlignment.spaceBetween,
 
           children: <Widget>[
-
-
-
-
             usernameSpace(),
             botonContinuar(),
           ],
@@ -81,9 +77,10 @@ Widget botonContinuar(){
 
   return Container(
 
-padding: EdgeInsets.only(top:250,left: 140),
+padding: EdgeInsets.only(top:0,left: 250),
     child: IconButton(
       icon:  Image.asset('assets/flecha_login.png'),
+      iconSize: 200.0,
       onPressed: () {
 
         //Navigator.push(
