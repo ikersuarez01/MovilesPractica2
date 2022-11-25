@@ -1,3 +1,5 @@
+
+
 import 'package:flutter/material.dart';
 
 class login extends StatefulWidget{
@@ -28,13 +30,14 @@ Widget body(){
       child: Center(
         child: Column(
           mainAxisAlignment :MainAxisAlignment.center,
-          mainAxisSize: MainAxisSize.max,
+
           children: <Widget>[
 
 
 
-            botonContinuar(),
+
             usernameSpace(),
+            botonContinuar(),
           ],
 
       ),
@@ -61,7 +64,7 @@ Widget username(){
 
 Widget usernameSpace(){
   return Container(
-padding: EdgeInsets.only(left: 230,right: 90),
+padding: EdgeInsets.only(left: 20,right: 20,top:300),
       child: TextField(
         textAlign: TextAlign.center,
           decoration: InputDecoration(
@@ -75,9 +78,12 @@ padding: EdgeInsets.only(left: 230,right: 90),
 }
 
 Widget botonContinuar(){
+
   return Container(
+
 padding: EdgeInsets.only(top:250,left: 140),
-    child: OutlinedButton(
+    child: IconButton(
+      icon:  Image.asset('assets/flecha_login.png'),
       onPressed: () {
 
         //Navigator.push(
@@ -86,11 +92,14 @@ padding: EdgeInsets.only(top:250,left: 140),
         // );
       },
 
-      child: Text("CONTINUAR"),
+      ),
 
-    ),
 
-  );
+
+
+    );
+
+
 
 }
 
