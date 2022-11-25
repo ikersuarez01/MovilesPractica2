@@ -23,8 +23,8 @@ class _loginState extends State<login>{
 Widget body(){
   return  Container(
     decoration: BoxDecoration(
-      image: DecorationImage(image: AssetImage('assets/fondo_1.png'),
-          fit: BoxFit.cover, repeat:
+      image: DecorationImage(image: AssetImage('assets/Mesa de trabajo 1.png'),
+          fit: BoxFit.cover,
 
 
       )
@@ -35,7 +35,7 @@ Widget body(){
           mainAxisAlignment :MainAxisAlignment.spaceBetween,
 
           children: <Widget>[
-            Image.asset('assets/login_gato_pensativo.png'),
+
             usernameSpace(),
             botonContinuar(),
           ],
