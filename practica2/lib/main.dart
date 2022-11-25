@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:practica2/login.dart';
+import 'package:practica2/mainMenu.dart';
 
 //PANTALLA DE INICIO
 void main() {
@@ -55,6 +56,15 @@ Widget portada(BuildContext context){
             );
               },
               child: Image.asset('assets/logo.png'),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => mainMenu()),
+            );
+              },
+              child: Text("Pantalla de Inicio"),
             )
           ],
         )
