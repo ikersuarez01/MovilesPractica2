@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:practica2/MainGame.dart';
 import 'package:practica2/dificultad.dart';
 
 class mainMenu extends StatefulWidget{
@@ -39,10 +40,10 @@ Widget body(BuildContext context){
             ),
           TextButton(
               onPressed: () {
-                /*Navigator.push(
+                Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => ()),
-            );*/
+                  MaterialPageRoute(builder: (context) => PantallaJuego()),
+            );
               },
               child: Image.asset('assets/exit.png'),
             ),
