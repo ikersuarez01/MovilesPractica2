@@ -47,7 +47,6 @@ Widget portada(BuildContext context){
         child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset('assets/logo.png'),
             OutlinedButton(
               onPressed: () {
                 Navigator.push(
@@ -55,7 +54,7 @@ Widget portada(BuildContext context){
                   MaterialPageRoute(builder: (context) => login()),
             );
               },
-              child: Text("JUGAR"),
+              child: Image.asset('assets/logo.png'),
             )
           ],
         )
