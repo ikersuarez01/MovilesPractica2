@@ -40,10 +40,10 @@ Widget body(BuildContext context){
             ),
           TextButton(
               onPressed: () {
-                Navigator.push(
+                /*Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => PantallaJuego()),
-            );
+            );*/
               },
               child: Image.asset('assets/exit.png'),
             ),
