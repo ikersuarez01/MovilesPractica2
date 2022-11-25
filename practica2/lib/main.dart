@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:practica2/login.dart';
 
+//PANTALLA DE INICIO
 void main() {
   runApp(const MyApp());
 }
@@ -29,21 +31,51 @@ class _InicioState extends State<Inicio>{
   Widget build(BuildContext context){
     return Scaffold(//estructura pantalla: AppBar y body
       body: Center(
-          child: Text("Aquí va la foto de inicio")),
+          child: portada(context)),
     );
   }
 }
 
-Widget portada(){
+Widget portada(BuildContext context){
   return Container(
-    //decoration: BoxDecoration(
-    // image: DecorationImage(image: AssetImage('url')), //aquí va la imagen de fondo
-    // fit: BoxFit.cover)
-    child: Center(child: TextButton(
-      onPressed: (){
-        //aquí lo que ocurra al pulsar
-      },
-      child: Text('Michial'/*, style: TextStyle(color: Color),*/),
-    )),
-  );
-}
+    decoration: BoxDecoration(
+      image: DecorationImage(image: AssetImage('assets/fondoinicio.png'), //aquí va la imagen de fondo
+      fit: BoxFit.cover)),
+    //child: AssetImage('assets/fondoinicio.png'),
+    child: 
+      Center(
+        child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset('assets/logo.png'),
+            OutlinedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => login()),
+            );
+              },
+              child: Text("JUGAR"),
+            )
+          ],
+        )
+         ),
+         );
+
+
+      }
+
+/*TextButton(
+          onPressed: (){
+            //aquí lo que ocurra al pulsar
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => login()),
+            );
+            const Text("AplastaMichis");
+          },
+        child: Image.asset("assets/logo.png")
+        ,
+
+
+        )*/
