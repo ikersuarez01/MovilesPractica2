@@ -23,15 +23,19 @@ class _loginState extends State<login>{
 Widget body(){
   return  Container(
     decoration: BoxDecoration(
-      image: DecorationImage(image: AssetImage('assets/login_gato_saludando.png'),
-          fit: BoxFit.contain
+      image: DecorationImage(image: AssetImage('assets/fondo_1.png'),
+          fit: BoxFit.cover, repeat:
+
+
       )
     ),
+
       child: Center(
         child: Column(
           mainAxisAlignment :MainAxisAlignment.spaceBetween,
 
           children: <Widget>[
+            Image.asset('assets/login_gato_pensativo.png'),
             usernameSpace(),
             botonContinuar(),
           ],
@@ -60,7 +64,7 @@ Widget username(){
 
 Widget usernameSpace(){
   return Container(
-padding: EdgeInsets.only(left: 20,right: 20,top:300),
+padding: EdgeInsets.only(left: 20,right: 20,bottom:0),
       child: TextField(
         textAlign: TextAlign.center,
           decoration: InputDecoration(
@@ -80,7 +84,7 @@ Widget botonContinuar(){
 padding: EdgeInsets.only(top:0,left: 250),
     child: IconButton(
       icon:  Image.asset('assets/flecha_login.png'),
-      iconSize: 200.0,
+      iconSize: 100.0,
       onPressed: () {
 
         //Navigator.push(
