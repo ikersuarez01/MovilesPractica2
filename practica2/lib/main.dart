@@ -47,7 +47,7 @@ Widget portada(BuildContext context){
         child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset('logo.png'),
+            Image.asset('assets/logo.png'),
             OutlinedButton(
               onPressed: () {
                 Navigator.push(
