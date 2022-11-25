@@ -11,46 +11,87 @@ class _loginState extends State<login>{
   @override
   Widget build(BuildContext context){
     return Scaffold(//estructura pantalla: AppBar y body
-      body: Center(
-          child: portadaLogin(context)),
-    );
+      body: body(),
+
+      );
+
   }
 }
-Widget portadaLogin(BuildContext context){
-  return Container(
-    child: Scaffold(
-      body: Center(
-        child: Column(
-          children:[
-            Image.asset('assets/login_gato_saludando.png'),
-            SizedBox(height:20.0), _userTF(),
-          ],
-        )
-      )
-  )
-  );
 
+Widget body(){
+  return  Container(
+    decoration: BoxDecoration(
+      image: DecorationImage(image: AssetImage('assets/login_gato_saludando.png'),
+          fit: BoxFit.contain
+      )
+    ),
+      child: Center(
+        child: Column(
+          mainAxisAlignment :MainAxisAlignment.center,
+          mainAxisSize: MainAxisSize.max,
+          children: <Widget>[
+
+
+
+            botonContinuar(),
+            usernameSpace(),
+          ],
+
+      ),
+      ),
+
+
+  );
 
 }
 
-Widget _userTF() {
-  return StreamBuilder(
-      builder: (BuildContext context, AsyncSnapshot snapshot) {
-        return Container(
-            padding: EdgeInsets.symmetric(horizontal: 100.0),
-            child: TextField(
-              keyboardType: TextInputType.name,
-            decoration: InputDecoration(
-              icon: Image.asset('assets/logo.png',scale: 5.0),
-              hintText: 'MichiTraviesa',
-              labelText: 'USERNAME',
+Widget username(){
+      return Container(
 
-        ),
-        ),
-
-        );
-      }
+        child: Text("Inicia Sesión",
+          style: TextStyle(
+              color: Colors.black,
+              fontSize: 25.0,
+              fontWeight: FontWeight.bold,
+  ),
+  ),
   );
+
+}
+
+Widget usernameSpace(){
+  return Container(
+padding: EdgeInsets.only(left: 230,right: 90),
+      child: TextField(
+        textAlign: TextAlign.center,
+          decoration: InputDecoration(
+              hintText: "Usuario",
+              fillColor: Colors.white30,
+              filled: false
+          )
+      ),
+  );
+
+}
+
+Widget botonContinuar(){
+  return Container(
+padding: EdgeInsets.only(top:250,left: 140),
+    child: OutlinedButton(
+      onPressed: () {
+
+        //Navigator.push(
+        // context,
+        //   MaterialPageRoute(builder: (context) => login()),
+        // );
+      },
+
+      child: Text("CONTINUAR"),
+
+    ),
+
+  );
+
 }
 
 
