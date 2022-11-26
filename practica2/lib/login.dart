@@ -3,10 +3,11 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:practica2/main.dart';
 import 'package:practica2/mainMenu.dart';
 import 'package:flutter/services.dart';
 
-
+bool a=false;
 final TextEditingController _userController = TextEditingController();
  String finalUserName="";
 class login extends StatefulWidget{
@@ -52,9 +53,23 @@ Widget body(BuildContext context){
           mainAxisAlignment :MainAxisAlignment.start,
 
           children: <Widget>[
-            botonOpciones(context),
+            Row(
+
+                children: [
+
+                  botonHome(context),
+                  botonOpciones(context),
+
+
+                  ]
+            ),
+
             usernameSpace(context),
             botonContinuar(context),
+
+
+
+
 
           ],
 
@@ -120,6 +135,7 @@ padding: EdgeInsets.only(top:0,left: 300),
           iconSize: 150.0,
           onPressed: () {
             if(_userController.text.length>=3){
+
               finalUserName=_userController.text;
               _userController.text="";
 
@@ -128,7 +144,15 @@ padding: EdgeInsets.only(top:0,left: 300),
                 MaterialPageRoute(builder: (context) => mainMenu()),
               );
             }else{
-            messageError();
+
+
+                      messageError(context);
+
+
+
+
+
+
             //  Navigator.pop('a');
             }
 
@@ -155,15 +179,24 @@ padding: EdgeInsets.only(top:0,left: 300),
 
 
 }
-Widget messageError(){
-  return Image.asset('hqdefault.jpg');
+Widget messageError(BuildContext context){
+  return Container(
+padding: EdgeInsets.only(top: 0),
+      child: Image.asset('assets/exit.png',
+      scale: 2.0,)
+
+
+        );
+
+
+
 }
 
 Widget botonOpciones(BuildContext context){
 
   return Container(
 
-    padding: EdgeInsets.only(top:0,left: 300),
+    padding: EdgeInsets.only(top:0,left: 100),
 
     child: Column(
       children: <Widget> [
@@ -179,6 +212,50 @@ Widget botonOpciones(BuildContext context){
                 MaterialPageRoute(builder: (context) => mainMenu()),
               );
             },
+
+
+
+
+        ),
+
+
+      ],
+
+
+
+
+
+
+    ),
+
+
+
+
+  );
+
+
+
+}
+Widget botonHome(BuildContext context){
+
+  return Container(
+
+    padding: EdgeInsets.only(top:0,right: 100),
+
+    child: Column(
+      children: <Widget> [
+        IconButton(
+          icon: Image.asset('assets/flechamainmenu.png'),
+          iconSize: 80.0,
+          onPressed: () {
+          _userController.text="";
+
+
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => MyApp()),
+            );
+          },
 
 
 
