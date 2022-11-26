@@ -70,6 +70,21 @@ flutter:
     - assets/Pez.png
     - assets/5.png
     - assets/
+    - assets/boton_ajustes.png
+    - assets/fondo_1_claro.png
+    - assets/home.png
+    - assets/scoreingame.png
+    - assets/suelo.png
+    - assets/Gameplay.png
+    - assets/gameplay2.png
+    - assets/FondoScore.png
+    - assets/ranking.png
+    - assets/numerovida.png
+    - assets/numerogatos.png
+    - assets/reloj.png
+
+
+
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
@@ -84,9 +99,9 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   # fonts:
-  #   - family: Schyler
+  #   - family: Courier
   #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
+  #       - asset: assets/courier-new.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro

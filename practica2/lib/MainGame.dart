@@ -1,14 +1,16 @@
 //#region Imports
 
 import 'dart:async';
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'dart:math';
+import 'main.dart';
 
 //#endregion
 
 //#region Variables
-var boxHeight = 100.0;
-var boxWidth = 100.0;
+var boxHeight = 120.0;
+var boxWidth = 120.0;
 
 var boxClosed = 'assets/open.png';
 var boxOpened = 'assets/closed.png';
@@ -29,8 +31,6 @@ void main() {
   runApp(PantallaJuego());
 
 }
-
-
 
 class PantallaJuego extends StatelessWidget {
   const PantallaJuego({Key? key}) : super(key: key);
@@ -88,6 +88,9 @@ class _InicioState extends State<Inicio> {
                 boxList[aux] = 0;
                 aux = random.nextInt(9);
                 int a = random.nextInt(100);
+                if(boxList[aux] == 1){
+                  return;
+                }
                 if(a <= 65){
                   boxList[aux] = 1;
                 } else if(a <= 95){
@@ -109,6 +112,9 @@ class _InicioState extends State<Inicio> {
               boxList[aux2] = 0;
               aux2 = random.nextInt(9);
               int a = random.nextInt(100);
+              if(boxList[aux2] == 1){
+                return;
+              }
               if(a <= 65){
                 boxList[aux2] = 1;
               } else if(a <= 95){
@@ -236,38 +242,113 @@ class _InicioState extends State<Inicio> {
     }
     //#endregion
 
+    //#region Cajas Gameplay
+    Row CajasGameplay(){
+      return Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisSize: MainAxisSize.max,
+        children: <Widget>[
+          ColumnInit(0, 3, 6),
+          ColumnInit(1, 4, 7),
+          ColumnInit(2, 5, 8)
+        ],
+      );
+    }
+    //#endregion
+
+    //#region Barra Botones Home y Ajustes
+    SizedBox BotonesTopBar(){
+      return SizedBox(
+        height: MediaQuery.of(context).size.height * 0.2,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisSize: MainAxisSize.max,
+          children: <Widget>[
+            Container(
+              child: IconButton(
+                icon: Image.asset('assets/home.png'),
+                iconSize: 100,
+                onPressed: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => const MyApp()));
+                },
+              ),
+            ),
+            Container(
+              child: IconButton(
+                icon: Image.asset('assets/boton_ajustes.png'),
+                iconSize: 100,
+                onPressed: (){},
+              ),
+            )
+          ],
+        ),
+      );
+    }
+  //#endregion
+
+    //#region Barra Puntuacion y vidas
+    SizedBox ScoreBar(){
+      return SizedBox(
+          height: MediaQuery.of(context).size.height * 0.15,
+          child: Container(
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage('assets/scoreingame.png'),
+                    fit:BoxFit.cover,
+                  )
+              ),
+              child: Padding(
+                  padding: EdgeInsets.only(top:20,left: MediaQuery.of(context).size.width * 0.1,right: MediaQuery.of(context).size.width * 0.1),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisSize: MainAxisSize.max,
+                    children: <Widget>[
+                      Text(
+                          '$vidas',
+                          style: TextStyle(fontSize: 40, fontFamily: 'Courier New', fontWeight: FontWeight.bold)
+                      ),
+                      Text(
+                          '$puntuacion',
+                          style: TextStyle(fontSize: 40, fontFamily: 'Courier New', fontWeight: FontWeight.bold)
+                      )
+
+                    ],
+                  )
+              )
+          )
+      );
+    }
+
+    //#endregion
+
   //#endregion
 
   //#region Body y AppBar
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("MATAGATOS"),
-      ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Container(
-              child: Text('score: $puntuacion || vidas: $vidas'),
-            ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisSize: MainAxisSize.max,
-            children: <Widget>[
-              ColumnInit(0, 3, 6),
-              ColumnInit(1, 4, 7),
-              ColumnInit(2, 5, 8)
-            ],
-          )
-          ],
-      )
+      body: Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('assets/gameplay2.png'),
+              fit:BoxFit.cover,
+            )
+          ),
+          child: Column(
+              children: <Widget>[
+                BotonesTopBar(),
+                ScoreBar(),
+                Expanded(child: CajasGameplay())
+              ],
+            )
+        )
     );
   }
   //#endregion
-
 }
+
+
 
 //#endregion
 
