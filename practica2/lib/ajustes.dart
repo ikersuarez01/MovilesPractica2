@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class dificultad extends StatefulWidget{
-  dificultad({super.key});
+class ajustes extends StatefulWidget{
+  ajustes({super.key});
 
   @override
-  _dificultadState createState() => _dificultadState();
+  _ajustesState createState() => _ajustesState();
 }
 
-class _dificultadState extends State<dificultad>{
+class _ajustesState extends State<ajustes>{
   @override
   Widget build(BuildContext context){
     return Scaffold(//estructura pantalla: AppBar y body
@@ -18,6 +18,6 @@ class _dificultadState extends State<dificultad>{
 
 Widget body(BuildContext context){
   return Container(
-    child: Text("Pantalla Dificultad"),
+    child: Text("Pantalla Ajustes"),
   );
 }
