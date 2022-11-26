@@ -7,7 +7,8 @@ import 'package:practica2/mainMenu.dart';
 import 'package:flutter/services.dart';
 
 
-bool go=false;
+final TextEditingController _userController = TextEditingController();
+ String finalUserName="";
 class login extends StatefulWidget{
 
 
@@ -22,7 +23,9 @@ class _loginState extends State<login>{
 
   @override
   Widget build(BuildContext context){
+
     return Scaffold(//estructura pantalla: AppBar y body
+
       body: body(context),
 
       );
@@ -31,23 +34,28 @@ class _loginState extends State<login>{
 }
 
 Widget body(BuildContext context){
+
   return  Container(
+
     decoration: BoxDecoration(
-      image: DecorationImage(image: AssetImage('assets/Mesa de trabajo 1.png'),
+        image: DecorationImage(image: AssetImage('assets/Mesa de trabajo 1.png'),
           fit: BoxFit.cover,
-
-
-      )
+        )
     ),
 
+
+
       child: Center(
+
         child: Column(
-          mainAxisAlignment :MainAxisAlignment.center,
+
+          mainAxisAlignment :MainAxisAlignment.start,
 
           children: <Widget>[
-
+            botonOpciones(context),
             usernameSpace(context),
             botonContinuar(context),
+
           ],
 
       ),
@@ -74,9 +82,9 @@ Widget body(BuildContext context){
 
 Widget usernameSpace(BuildContext context){
   return Container(
-padding: EdgeInsets.only(left: 90,right: 90,top:383),
+padding: EdgeInsets.only(left: 90,right: 90,top:375),
       child: TextFormField(
-
+        controller: _userController,
         textAlign: TextAlign.start,
 
           keyboardType: TextInputType.name,
@@ -104,19 +112,37 @@ Widget botonContinuar(BuildContext context){
   return Container(
 
 padding: EdgeInsets.only(top:0,left: 300),
-    child: IconButton(
-      icon:  Image.asset('assets/flecha_login.png'),
-      iconSize: 150.0,
 
-      onPressed: () {
+    child: Column(
+      children: <Widget> [
+        IconButton(
+          icon: Image.asset('assets/flecha_login.png'),
+          iconSize: 150.0,
+          onPressed: () {
+            if(_userController.text.length>=3){
+              finalUserName=_userController.text;
+              _userController.text="";
 
-  Navigator.push(
-    context,
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => mainMenu()),
+              );
+            }else{
+            messageError();
+            //  Navigator.pop('a');
+            }
+
+          },
 
 
-    MaterialPageRoute(builder: (context) => mainMenu()),
-  );
-}
+            )
+
+
+      ],
+
+
+
+
 
 
       ),
@@ -129,7 +155,52 @@ padding: EdgeInsets.only(top:0,left: 300),
 
 
 }
+Widget messageError(){
+  return Image.asset('hqdefault.jpg');
+}
+
+Widget botonOpciones(BuildContext context){
+
+  return Container(
+
+    padding: EdgeInsets.only(top:0,left: 300),
+
+    child: Column(
+      children: <Widget> [
+        IconButton(
+          icon: Image.asset('assets/botonajustes.png'),
+          iconSize: 80.0,
+          onPressed: () {
 
 
 
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => mainMenu()),
+              );
+            },
+
+
+
+
+        ),
+
+
+      ],
+
+
+
+
+
+
+    ),
+
+
+
+
+  );
+
+
+
+}
 
