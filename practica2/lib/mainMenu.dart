@@ -69,7 +69,9 @@ Widget body(BuildContext context){
           Container(
             height: MediaQuery.of(context).size.height * 0.30,
             child: Row (
-              children:[TextButton(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children:[
+              TextButton(
               onPressed: () {
                 Navigator.push(
                   context,
@@ -82,7 +84,9 @@ Widget body(BuildContext context){
           Container(
             height: MediaQuery.of(context).size.height * 0.20,
             child: Row (
-              children:[TextButton(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children:[
+                TextButton(
               onPressed: () {
                 Navigator.push(
                   context,
