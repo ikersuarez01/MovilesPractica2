@@ -36,17 +36,13 @@ Widget body(BuildContext context){
             child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Column(
-                children: [
-                  TextButton(
+              TextButton(
               onPressed: () {
                 Navigator.pop(context); //vuelve a pantalla anterior
               },
               child: Image.asset('assets/flechamainmenu.png')
-            ),]),
-              Column(
-                children: [
-                  TextButton(
+            ),
+              TextButton(
               onPressed: () {
                 Navigator.push(
                   context,
@@ -54,9 +50,7 @@ Widget body(BuildContext context){
             );
               },
               child: Image.asset('assets/botonajustes.png')
-            )
-                ],
-              ),
+            ),
             ],
           ),
         ),
