@@ -9,7 +9,9 @@ import 'package:flutter/services.dart';
 
 bool a=false;
 final TextEditingController _userController = TextEditingController();
- String finalUserName="";
+String finalUserName="";
+
+
 class login extends StatefulWidget{
 
 
@@ -25,11 +27,15 @@ class _loginState extends State<login>{
   @override
   Widget build(BuildContext context){
 
-    return Scaffold(//estructura pantalla: AppBar y body
+  return Scaffold(//estructura pantalla: AppBar y body
 
-      body: body(context),
+    body: body(context),
 
-      );
+  );
+
+
+
+
 
   }
 }
@@ -53,6 +59,7 @@ Widget body(BuildContext context){
           mainAxisAlignment :MainAxisAlignment.start,
 
           children: <Widget>[
+
             Row(
 
                 children: [
@@ -66,6 +73,7 @@ Widget body(BuildContext context){
 
             usernameSpace(context),
             botonContinuar(context),
+            messageText(),
 
 
 
@@ -80,7 +88,6 @@ Widget body(BuildContext context){
   );
 
 }
-
 /*Widget username(){
       return Container(
 
@@ -97,7 +104,7 @@ Widget body(BuildContext context){
 
 Widget usernameSpace(BuildContext context){
   return Container(
-padding: EdgeInsets.only(left: 90,right: 90,top:375),
+padding: EdgeInsets.only(left: 90,right: 90,top:345),
       child: TextFormField(
         controller: _userController,
         textAlign: TextAlign.start,
@@ -134,8 +141,11 @@ padding: EdgeInsets.only(top:0,left: 300),
           icon: Image.asset('assets/flecha_login.png'),
           iconSize: 150.0,
           onPressed: () {
-            if(_userController.text.length>=3){
+            
 
+
+            if(_userController.text.length>=3){
+            a=false;
               finalUserName=_userController.text;
               _userController.text="";
 
@@ -144,16 +154,13 @@ padding: EdgeInsets.only(top:0,left: 300),
                 MaterialPageRoute(builder: (context) => mainMenu()),
               );
             }else{
+             a=true;
 
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => login()),
+              );
 
-                      messageError(context);
-
-
-
-
-
-
-            //  Navigator.pop('a');
             }
 
           },
@@ -179,18 +186,23 @@ padding: EdgeInsets.only(top:0,left: 300),
 
 
 }
-Widget messageError(BuildContext context){
-  return Container(
-padding: EdgeInsets.only(top: 0),
-      child: Image.asset('assets/exit.png',
-      scale: 2.0,)
 
+Widget messageText(){
+  if(a){
 
-        );
+    return Text('PLEASE ENTER AT LEAST 3 CHARACTERS',
+      selectionColor: Colors.red,
 
+    );
 
+  }else{
+    return Text('');
+  }
 
 }
+
+
+
 
 Widget botonOpciones(BuildContext context){
 
@@ -256,7 +268,6 @@ Widget botonHome(BuildContext context){
               MaterialPageRoute(builder: (context) => MyApp()),
             );
           },
-
 
 
 
