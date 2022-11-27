@@ -29,9 +29,11 @@ Widget body(BuildContext context){
       )
     ),
     child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        //mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Row(
+          Container(
+            height: MediaQuery.of(context).size.height * 0.15,
+            child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               TextButton(
@@ -51,11 +53,14 @@ Widget body(BuildContext context){
               },
               child: Image.asset(
                 width: 50.0,
-                'assets/flechamainmenu.png')
+                'assets/botonajustes.png')
             ),
             ],
           ),
-          Row(
+        ),
+        Container(
+          height: MediaQuery.of(context).size.height * 0.1,
+          child: Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               Image.asset(
@@ -63,6 +68,8 @@ Widget body(BuildContext context){
                 'assets/titulojuego.png'),
             ],
           ),
+          ),  
+          
           TextButton(
               onPressed: () {
                 Navigator.push(
