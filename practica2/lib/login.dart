@@ -30,30 +30,28 @@ class _loginState extends State<login>{
 
 
   @override
-  void initState() {
-    super.initState();
-   setState(() {
-     if(_userController.text.length<=3){
-       changeCat=true;
-     }else{
-       changeCat=false;
-     }
-
-   });
+  //void initState() {
+   // super.initState();
+  // setState(() {
+//_u
+     //  changeCat=true;
 
 
-  }
+ //  });
+
+
+ // }
   @override
   Widget build(BuildContext context){
-    if(changeCat)
-    {
+   /* if(changeCat)
+    {*/
 
       return Scaffold(//estructura pantalla: AppBar y body
 
         body: body(context),
 
       );
-    }else{
+   // }else{
       return Scaffold(//estructura pantalla: AppBar y body
 
           body: body2(context),
@@ -69,7 +67,7 @@ class _loginState extends State<login>{
   }
 
 
-}
+
 
 
 
