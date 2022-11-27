@@ -39,7 +39,11 @@ Widget body(BuildContext context){
               onPressed: () {
                 Navigator.pop(context); //vuelve a pantalla anterior
               },
-              child: Image.asset('assets/flechamainmenu.png'),
+              child: SizedBox(
+                width: 0.5,
+                height: 0.5,
+                child: Image.asset('assets/flechamainmenu.png'),
+              )
             ),
               TextButton(
               onPressed: () {
@@ -48,14 +52,22 @@ Widget body(BuildContext context){
                   MaterialPageRoute(builder: (context) => ajustes()), //navega a pantalla de ajustes
             );
               },
-              child: Image.asset('assets/botonajustes.png'),
+              child: SizedBox(
+                width: 0.5,
+                height: 0.5,
+                child: Image.asset('assets/botonajustes.png'),
+              )
             ),
             ],
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              Image.asset('assets/titulojuego.png'),
+              SizedBox(
+                width: 0.5,
+                height: 0.5,
+                child: Image.asset('assets/titulojuego.png'),
+              )
             ],
           ),
           TextButton(
@@ -65,14 +77,22 @@ Widget body(BuildContext context){
                   MaterialPageRoute(builder: (context) => dificultad()),
             );
               },
-              child: Image.asset('assets/play.png'),
+              child: SizedBox(
+                width: 0.5,
+                height: 0.5,
+                child: Image.asset('assets/play.png'),
+              ),  
             ),
           TextButton(
               onPressed: () {
                 //Navigator.pop(context); //vuelve atrás, si fuera la primer pantalla saldría de la app
                 exit(0); //cierra la app pero es como si tirara del cable, no se si nos servirá para persistencia
               },
-              child: Image.asset('assets/exit.png'),
+              child: SizedBox(
+                width: 0.5,
+                height: 0.5,
+                child: Image.asset('assets/exit.png'),
+              )
             ),
         ],
       ),
