@@ -58,8 +58,9 @@ Widget body(BuildContext context){
             ],
           ),
         ),
-          
-          Row(
+        Container(
+          height: MediaQuery.of(context).size.height * 0.1,
+          child: Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               Image.asset(
@@ -67,6 +68,8 @@ Widget body(BuildContext context){
                 'assets/titulojuego.png'),
             ],
           ),
+          ),  
+          
           TextButton(
               onPressed: () {
                 Navigator.push(
