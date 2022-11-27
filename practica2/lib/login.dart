@@ -6,11 +6,11 @@ import 'package:flutter/material.dart';
 import 'package:practica2/main.dart';
 import 'package:practica2/mainMenu.dart';
 import 'package:flutter/services.dart';
-
+import 'package:practica2/login.dart';
 bool a=false;
 final TextEditingController _userController = TextEditingController();
 String finalUserName="";
-
+List<int> boxList = List<int>.generate(5, (index) => 0, growable: false);
 
 class login extends StatefulWidget{
 
@@ -194,7 +194,9 @@ Widget messageText(){
   if(a){
 
     return Text('PLEASE ENTER AT LEAST 3 CHARACTERS',
-      selectionColor: Colors.red,
+      selectionColor: Colors.pink,
+      textScaleFactor: 1.5,
+      textAlign: TextAlign.center,
 
     );
 
@@ -293,5 +295,26 @@ Widget botonHome(BuildContext context){
 
 
 
+}
+
+Widget setImage2(int index){
+  switch(boxList[index]) {
+    case 0:
+      {
+        return Image(
+            image: AssetImage('assets/CajaCerrada.png'));
+      }
+      break;
+    case 1:
+      {
+        return Image(
+            image: AssetImage('assets/CajaAbierta.png'));
+      }
+      break;
+
+
+  }
+  return Image(
+      image: AssetImage('assets/5.png'));
 }
 
