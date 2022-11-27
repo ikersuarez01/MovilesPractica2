@@ -34,33 +34,23 @@ Widget body(BuildContext context){
           Container(
             height: MediaQuery.of(context).size.height * 0.15,
             child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  TextButton(
-                  onPressed: () {
-                  Navigator.pop(context); //vuelve a pantalla anterior
+              TextButton(
+              onPressed: () {
+                Navigator.pop(context); //vuelve a pantalla anterior
               },
-                  child: Image.asset('assets/flechamainmenu.png')
-            )
-            ],
-              ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  TextButton(
-                  onPressed: () {
-                  Navigator.push(
+              child: Image.asset('assets/flechamainmenu.png')
+            ),
+              TextButton(
+              onPressed: () {
+                Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => ajustes()), //navega a pantalla de ajustes
             );
               },
-                  child: Image.asset('assets/botonajustes.png')
-            )
-            ],
-              ),
+              child: Image.asset('assets/botonajustes.png')
+            ),
             ],
           ),
         ),
