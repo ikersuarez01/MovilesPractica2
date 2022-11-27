@@ -40,8 +40,7 @@ Widget body(BuildContext context){
                 Navigator.pop(context); //vuelve a pantalla anterior
               },
               child: SizedBox(
-                width: 0.5,
-                height: 0.5,
+                width: 100.0,
                 child: Image.asset('assets/flechamainmenu.png'),
               )
             ),
@@ -53,8 +52,7 @@ Widget body(BuildContext context){
             );
               },
               child: SizedBox(
-                width: 0.5,
-                height: 0.5,
+                width: 197.0,
                 child: Image.asset('assets/botonajustes.png'),
               )
             ),
@@ -65,7 +63,6 @@ Widget body(BuildContext context){
             children: [
               SizedBox(
                 width: 0.5,
-                height: 0.5,
                 child: Image.asset('assets/titulojuego.png'),
               )
             ],
