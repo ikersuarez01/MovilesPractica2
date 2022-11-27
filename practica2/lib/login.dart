@@ -315,6 +315,7 @@ Widget setImage2(int index){
 
   }
   return Image(
-      image: AssetImage('assets/5.png'));
+      image: AssetImage('assets/5.png')
+  );
 }
 
