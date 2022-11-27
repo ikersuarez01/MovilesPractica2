@@ -30,24 +30,42 @@ class _loginState extends State<login>{
 
 
   @override
+  void initState() {
+    super.initState();
+   setState(() {
+
+   });
+
+
+  }
+  @override
   Widget build(BuildContext context){
+    if(_userController.text.length>=3)
+    {
+      return Scaffold(//estructura pantalla: AppBar y body
 
-  return Scaffold(//estructura pantalla: AppBar y body
+        body: body(context),
 
-    body: body(context),
+      );
+    }else{
+      return Scaffold(//estructura pantalla: AppBar y body
 
-  );
+          body: body(context),
+
+      );
+    }
+
 
 
 
 
 
   }
+
+
 }
 
-void initState() {
- // super.initState();
-}
+
 
 Widget body(BuildContext context){
 
@@ -98,7 +116,54 @@ Widget body(BuildContext context){
 
   }
 
+Widget body2(BuildContext context){
 
+  return  Container(
+
+    decoration: BoxDecoration(
+        image: DecorationImage(image: AssetImage('assets/login_gato_saludando.png'),
+          fit: BoxFit.cover,
+        )
+    ),
+
+
+
+    child: Center(
+
+      child: Column(
+
+        mainAxisAlignment :MainAxisAlignment.start,
+
+        children: <Widget>[
+
+          Row(
+
+              children: [
+
+                botonHome(context),
+                botonOpciones(context),
+
+
+              ]
+          ),
+
+          usernameSpace(context),
+          botonContinuar(context),
+          messageText(),
+
+
+
+
+
+        ],
+
+      ),
+    ),
+
+
+  );
+
+}
 
 /*Widget username(){
       return Container(
