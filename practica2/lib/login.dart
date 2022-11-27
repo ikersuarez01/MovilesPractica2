@@ -108,7 +108,7 @@ padding: EdgeInsets.only(left: 90,right: 90,top:345),
       child: TextFormField(
         controller: _userController,
         textAlign: TextAlign.start,
-
+       // textInputAction: TextInputAction.values.,
           keyboardType: TextInputType.name,
 
 
@@ -152,13 +152,16 @@ padding: EdgeInsets.only(top:0,left: 300),
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => mainMenu()),
+
               );
+            a=false;
             }else{
              a=true;
 
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => login()),
+
               );
 
             }
@@ -262,7 +265,7 @@ Widget botonHome(BuildContext context){
           onPressed: () {
           _userController.text="";
 
-
+            a=false;
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => MyApp()),
