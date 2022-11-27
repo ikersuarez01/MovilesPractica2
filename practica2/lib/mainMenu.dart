@@ -63,27 +63,35 @@ Widget body(BuildContext context){
             ],
           ),
           ),  
-          
-          TextButton(
+          Container(
+            height: MediaQuery.of(context).size.height * 0.25
+          ),
+          Container(
+            height: MediaQuery.of(context).size.height * 0.30,
+            child: Row (
+              children:[TextButton(
               onPressed: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => dificultad()),
             );
               },
-              child: Image.asset(
-                width: 50.0,
-                'assets/play.png'),
-              ),  
-          TextButton(
+              child: Image.asset('assets/play.png'),
+              )] ),
+          ),
+          Container(
+            height: MediaQuery.of(context).size.height * 0.20,
+            child: Row (
+              children:[TextButton(
               onPressed: () {
-                //Navigator.pop(context); //vuelve atrás, si fuera la primer pantalla saldría de la app
-                exit(0); //cierra la app pero es como si tirara del cable, no se si nos servirá para persistencia
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => dificultad()),
+            );
               },
-              child: Image.asset(
-                width: 50.0,
-                'assets/exit.png'),
-              )
+              child: Image.asset('assets/exit.png'),
+              )] ),
+          ),
         ],
       ),
     );
