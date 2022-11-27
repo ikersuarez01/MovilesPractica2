@@ -40,9 +40,7 @@ Widget body(BuildContext context){
               onPressed: () {
                 Navigator.pop(context); //vuelve a pantalla anterior
               },
-              child: Image.asset(
-                width: 50.0,
-                'assets/flechamainmenu.png')
+              child: Image.asset('assets/flechamainmenu.png')
             ),
               TextButton(
               onPressed: () {
@@ -51,9 +49,7 @@ Widget body(BuildContext context){
                   MaterialPageRoute(builder: (context) => ajustes()), //navega a pantalla de ajustes
             );
               },
-              child: Image.asset(
-                width: 50.0,
-                'assets/botonajustes.png')
+              child: Image.asset('assets/botonajustes.png')
             ),
             ],
           ),
@@ -63,9 +59,7 @@ Widget body(BuildContext context){
           child: Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              Image.asset(
-                width: 50.0,
-                'assets/titulojuego.png'),
+              Image.asset('assets/titulojuego.png'),
             ],
           ),
           ),  
