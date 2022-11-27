@@ -30,7 +30,9 @@ Widget body(BuildContext context){
         Container(
             height: MediaQuery.of(context).size.height * 0.15,
             child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisSize: MainAxisSize.max,
             children: [
               TextButton(
               onPressed: () {
