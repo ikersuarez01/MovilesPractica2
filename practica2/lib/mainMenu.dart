@@ -28,9 +28,8 @@ Widget body(BuildContext context){
           fit: BoxFit.cover
       )
     ),
-    child: Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.end,
+    child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -39,10 +38,9 @@ Widget body(BuildContext context){
               onPressed: () {
                 Navigator.pop(context); //vuelve a pantalla anterior
               },
-              child: SizedBox(
-                width: 100.0,
-                child: Image.asset('assets/flechamainmenu.png'),
-              )
+              child: Image.asset(
+                width: 50.0,
+                'assets/flechamainmenu.png')
             ),
               TextButton(
               onPressed: () {
@@ -51,20 +49,18 @@ Widget body(BuildContext context){
                   MaterialPageRoute(builder: (context) => ajustes()), //navega a pantalla de ajustes
             );
               },
-              child: SizedBox(
-                width: 197.0,
-                child: Image.asset('assets/botonajustes.png'),
-              )
+              child: Image.asset(
+                width: 50.0,
+                'assets/flechamainmenu.png')
             ),
             ],
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              SizedBox(
-                width: 0.5,
-                child: Image.asset('assets/titulojuego.png'),
-              )
+              Image.asset(
+                width: 50.0,
+                'assets/titulojuego.png'),
             ],
           ),
           TextButton(
@@ -74,25 +70,21 @@ Widget body(BuildContext context){
                   MaterialPageRoute(builder: (context) => dificultad()),
             );
               },
-              child: SizedBox(
-                width: 0.5,
-                height: 0.5,
-                child: Image.asset('assets/play.png'),
+              child: Image.asset(
+                width: 50.0,
+                'assets/play.png'),
               ),  
-            ),
           TextButton(
               onPressed: () {
                 //Navigator.pop(context); //vuelve atrás, si fuera la primer pantalla saldría de la app
                 exit(0); //cierra la app pero es como si tirara del cable, no se si nos servirá para persistencia
               },
-              child: SizedBox(
-                width: 0.5,
-                height: 0.5,
-                child: Image.asset('assets/exit.png'),
+              child: Image.asset(
+                width: 50.0,
+                'assets/exit.png'),
               )
-            ),
         ],
       ),
-    ),
-  );
+    );
+  
 }
