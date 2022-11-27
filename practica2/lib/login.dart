@@ -13,7 +13,7 @@ import 'dart:math';
 bool a=false;
 final TextEditingController _userController = TextEditingController();
 String finalUserName="";
-
+bool changeCat=false;
 //List<int> boxList = List<int>.generate(5, (index) => 0, growable: false);
 
 
@@ -33,6 +33,11 @@ class _loginState extends State<login>{
   void initState() {
     super.initState();
    setState(() {
+     if(_userController.text.length<=3){
+       changeCat=true;
+     }else{
+       changeCat=false;
+     }
 
    });
 
@@ -40,8 +45,9 @@ class _loginState extends State<login>{
   }
   @override
   Widget build(BuildContext context){
-    if(_userController.text.length>=3)
+    if(changeCat)
     {
+
       return Scaffold(//estructura pantalla: AppBar y body
 
         body: body(context),
@@ -50,7 +56,7 @@ class _loginState extends State<login>{
     }else{
       return Scaffold(//estructura pantalla: AppBar y body
 
-          body: body(context),
+          body: body2(context),
 
       );
     }
