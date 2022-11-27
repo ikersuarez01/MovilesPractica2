@@ -55,7 +55,7 @@ Widget body(BuildContext context){
           ),
         ),
         Container(
-          height: MediaQuery.of(context).size.height * 0.1,
+          height: MediaQuery.of(context).size.height * 0.1, //titulo juego
           child: Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
@@ -67,7 +67,7 @@ Widget body(BuildContext context){
             height: MediaQuery.of(context).size.height * 0.25
           ),
           Container(
-            height: MediaQuery.of(context).size.height * 0.30,
+            height: MediaQuery.of(context).size.height * 0.30, //boton jugar
             child: Row (
               mainAxisAlignment: MainAxisAlignment.center,
               children:[
@@ -82,16 +82,13 @@ Widget body(BuildContext context){
               )] ),
           ),
           Container(
-            height: MediaQuery.of(context).size.height * 0.20,
+            height: MediaQuery.of(context).size.height * 0.20, //boton salir
             child: Row (
               mainAxisAlignment: MainAxisAlignment.center,
               children:[
                 TextButton(
               onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => dificultad()),
-            );
+                exit(0); //no se yo
               },
               child: Image.asset('assets/exit.png'),
               )] ),
