@@ -7,10 +7,15 @@ import 'package:practica2/main.dart';
 import 'package:practica2/mainMenu.dart';
 import 'package:flutter/services.dart';
 import 'package:practica2/login.dart';
+import 'dart:async';
+import 'dart:math';
+
 bool a=false;
 final TextEditingController _userController = TextEditingController();
 String finalUserName="";
-List<int> boxList = List<int>.generate(5, (index) => 0, growable: false);
+
+//List<int> boxList = List<int>.generate(5, (index) => 0, growable: false);
+
 
 class login extends StatefulWidget{
 
@@ -40,15 +45,19 @@ class _loginState extends State<login>{
   }
 }
 
+void initState() {
+ // super.initState();
+}
+
 Widget body(BuildContext context){
 
-  return  Container(
+    return  Container(
 
-    decoration: BoxDecoration(
-        image: DecorationImage(image: AssetImage('assets/Mesa de trabajo 1.png'),
-          fit: BoxFit.cover,
-        )
-    ),
+      decoration: BoxDecoration(
+          image: DecorationImage(image: AssetImage('assets/Mesa de trabajo 1.png'),
+            fit: BoxFit.cover,
+          )
+      ),
 
 
 
@@ -68,7 +77,7 @@ Widget body(BuildContext context){
                   botonOpciones(context),
 
 
-                  ]
+                ]
             ),
 
             usernameSpace(context),
@@ -81,13 +90,16 @@ Widget body(BuildContext context){
 
           ],
 
+        ),
       ),
-      ),
 
 
-  );
+    );
 
-}
+  }
+
+
+
 /*Widget username(){
       return Container(
 
@@ -297,25 +309,5 @@ Widget botonHome(BuildContext context){
 
 }
 
-Widget setImage2(int index){
-  switch(boxList[index]) {
-    case 0:
-      {
-        return Image(
-            image: AssetImage('assets/CajaCerrada.png'));
-      }
-      break;
-    case 1:
-      {
-        return Image(
-            image: AssetImage('assets/CajaAbierta.png'));
-      }
-      break;
 
-
-  }
-  return Image(
-      image: AssetImage('assets/5.png')
-  );
-}
 
