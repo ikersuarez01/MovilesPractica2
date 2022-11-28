@@ -9,13 +9,18 @@ import 'package:flutter/services.dart';
 import 'package:practica2/login.dart';
 import 'dart:async';
 import 'dart:math';
+import 'package:shared_preferences/shared_preferences.dart';
+
+
 
 bool a=false;
 final TextEditingController _userController = TextEditingController();
 String finalUserName="";
 bool changeCat=false;
 //List<int> boxList = List<int>.generate(5, (index) => 0, growable: false);
-
+List<String> players= List<String>.empty();
+List<int> time= List<int>.empty();
+List<int> pp= List<int>.empty();
 
 class login extends StatefulWidget{
 
@@ -30,14 +35,15 @@ class _loginState extends State<login>{
 
 
   @override
-  //void initState() {
-   // super.initState();
-  // setState(() {
-//_u
-     //  changeCat=true;
 
 
- //  });
+void initState(){
+    super.initState(); //sin esto no funciona la persistencia, no se actualiza el estado al entrar
+ setState(() {
+   cargarDatosAlInicio();
+ });
+
+  }
 
 
  // }
@@ -51,12 +57,7 @@ class _loginState extends State<login>{
         body: body(context),
 
       );
-   // }else{
-      return Scaffold(//estructura pantalla: AppBar y body
 
-          body: body2(context),
-
-      );
     }
 
 
@@ -64,7 +65,13 @@ class _loginState extends State<login>{
 
 
 
+
+  cargarDatosAlInicio() async{
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    _changeList(players.first, time.first, pp.first);
+  //  Partida(players.first,time.first,pp.first);
   }
+}
 
 
 
@@ -120,68 +127,7 @@ Widget body(BuildContext context){
 
   }
 
-Widget body2(BuildContext context){
 
-  return  Container(
-
-    decoration: BoxDecoration(
-        image: DecorationImage(image: AssetImage('assets/login_gato_saludando.png'),
-          fit: BoxFit.cover,
-        )
-    ),
-
-
-
-    child: Center(
-
-      child: Column(
-
-        mainAxisAlignment :MainAxisAlignment.start,
-
-        children: <Widget>[
-
-          Row(
-
-              children: [
-
-                botonHome(context),
-                botonOpciones(context),
-
-
-              ]
-          ),
-
-          usernameSpace(context),
-          botonContinuar(context),
-          messageText(),
-
-
-
-
-
-        ],
-
-      ),
-    ),
-
-
-  );
-
-}
-
-/*Widget username(){
-      return Container(
-
-        child: Text("Inicia Sesión",
-          style: TextStyle(
-              color: Colors.black,
-              fontSize: 25.0,
-              fontWeight: FontWeight.bold,
-  ),
-  ),
-  );
-
-}*/
 
 Widget usernameSpace(BuildContext context){
   return Container(
@@ -380,3 +326,12 @@ Widget botonHome(BuildContext context){
 
 
 
+
+
+void _changeList(String player, int time, int pp) async{
+  SharedPreferences prefs = await SharedPreferences.getInstance(); //para activar la persistencia
+
+  prefs.setInt("time", time); //almacenar en tiempo de ejecucion datos persistencia
+  prefs.setInt("pp", pp); //almacenar en tiempo de ejecucion datos persistencia
+  prefs.setString("player", player); //almacenar...
+}
