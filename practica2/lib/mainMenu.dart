@@ -25,7 +25,7 @@ class _mainMenuState extends State<mainMenu>{
 Widget body(BuildContext context){
   return Container(
      decoration: BoxDecoration(
-      image: DecorationImage(image: AssetImage('assets/fondoinicio.png'),
+      image: DecorationImage(image: AssetImage('assets/fondomenuinicial.png'),
           fit: BoxFit.cover
       )
     ),

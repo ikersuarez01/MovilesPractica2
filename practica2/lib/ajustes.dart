@@ -19,7 +19,7 @@ class _ajustesState extends State<ajustes>{
 Widget body(BuildContext context){
   return Container(
      decoration: BoxDecoration(
-      image: DecorationImage(image: AssetImage('assets/fondomenuinicial.png'),
+      image: DecorationImage(image: AssetImage('assets/fondoinicio.png'),
           fit: BoxFit.cover
       )
     ),
