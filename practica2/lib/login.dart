@@ -10,16 +10,14 @@ import 'package:practica2/login.dart';
 import 'dart:async';
 import 'dart:math';
 import 'package:shared_preferences/shared_preferences.dart';
-
+import 'package:practica2/user.dart';
 
 bool a=false;
 TextEditingController _userController = TextEditingController();
 String finalUserName="";
 bool changeCat=false;
 //List<int> boxList = List<int>.generate(5, (index) => 0, growable: false);
-List<String> players= List<String>.empty();
-List<int> time= List<int>.empty();
-List<int> pp= List<int>.empty();
+
 
 class login extends StatefulWidget{
 
@@ -71,6 +69,10 @@ void initState(){
     SharedPreferences a = await SharedPreferences.getInstance();
     //_changeList(players.first, time.first, pp.first);
   //  Partida(players.first,time.first,pp.first);
+  }
+
+  void guardarDatos() {
+    user User = user(_nombre.text, _puntuacion.text, _tiempo.text);
   }
 }
 
