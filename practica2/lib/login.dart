@@ -12,9 +12,8 @@ import 'dart:math';
 import 'package:shared_preferences/shared_preferences.dart';
 
 
-
 bool a=false;
-final TextEditingController _userController = TextEditingController();
+TextEditingController _userController = TextEditingController();
 String finalUserName="";
 bool changeCat=false;
 //List<int> boxList = List<int>.generate(5, (index) => 0, growable: false);
@@ -33,17 +32,19 @@ class login extends StatefulWidget{
 
 class _loginState extends State<login>{
 
-
+  TextEditingController _nombre = TextEditingController();
+  TextEditingController _puntuacion = TextEditingController();
+  TextEditingController _tiempo = TextEditingController();
   @override
 
 
-/*void initState(){
+void initState(){
     super.initState(); //sin esto no funciona la persistencia, no se actualiza el estado al entrar
  setState(() {
-   cargarDatosAlInicio();
+   cargarDatosIniciales();
  });
 
-  }*/
+  }
 
 
  // }
@@ -66,11 +67,11 @@ class _loginState extends State<login>{
 
 
 
- /* cargarDatosAlInicio() async{
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    _changeList(players.first, time.first, pp.first);
+ void cargarDatosIniciales() async{
+    SharedPreferences a = await SharedPreferences.getInstance();
+    //_changeList(players.first, time.first, pp.first);
   //  Partida(players.first,time.first,pp.first);
-  }*/
+  }
 }
 
 
