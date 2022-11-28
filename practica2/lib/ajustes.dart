@@ -19,7 +19,7 @@ class _ajustesState extends State<ajustes>{
 Widget body(BuildContext context){
   return Container(
      decoration: BoxDecoration(
-      image: DecorationImage(image: AssetImage('assets/fondomenuinicial.png'),
+      image: DecorationImage(image: AssetImage('assets/fondoinicio.png'),
           fit: BoxFit.cover
       )
     ),
@@ -28,6 +28,7 @@ Widget body(BuildContext context){
       children: [
         Container(
             height: MediaQuery.of(context).size.height * 0.15,
+            width: MediaQuery.of(context).size.width,
             child: Row (
               mainAxisAlignment: MainAxisAlignment.start,
               children:[
@@ -39,10 +40,12 @@ Widget body(BuildContext context){
               )] ),
           ),
         Container(
-            height: MediaQuery.of(context).size.height * 0.15
+            height: MediaQuery.of(context).size.height * 0.15,
+            width: MediaQuery.of(context).size.width,
           ),
         Container(
             height: MediaQuery.of(context).size.height * 0.3,
+            width: MediaQuery.of(context).size.width,
             child: Row (
               mainAxisAlignment: MainAxisAlignment.center,
               children:[
@@ -58,6 +61,7 @@ Widget body(BuildContext context){
           ), 
         Container(
             height: MediaQuery.of(context).size.height * 0.20,
+            width: MediaQuery.of(context).size.width,
             child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
@@ -77,7 +81,8 @@ Widget body(BuildContext context){
           ),
         ),
         Container(
-            height: MediaQuery.of(context).size.height * 0.2
+            height: MediaQuery.of(context).size.height * 0.2,
+            width: MediaQuery.of(context).size.width,
           ), 
       ],
     )
