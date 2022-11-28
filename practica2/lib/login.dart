@@ -18,7 +18,7 @@ import 'package:practica2/user.dart';
 
 
 bool a=false;
-TextEditingController _userController = TextEditingController();
+TextEditingController _nombre = TextEditingController();
 String finalUserName="";
 bool changeCat=false;
 //List<int> boxList = List<int>.generate(5, (index) => 0, growable: false);
@@ -156,7 +156,7 @@ Widget usernameSpace(BuildContext context){
   return Container(
 padding: EdgeInsets.only(left: 90,right: 90,top:375),
       child: TextFormField(
-        controller: _userController,
+        controller: _nombre,
         textAlign: TextAlign.start,
        // textInputAction: TextInputAction.values.,
           keyboardType: TextInputType.name,
@@ -194,10 +194,10 @@ padding: EdgeInsets.only(top:0,left: 300),
             
 
 
-            if(_userController.text.length>=3){
+            if(_nombre.text.length>=3){
             a=false;
-              finalUserName=_userController.text;
-              _userController.text="";
+              finalUserName=_nombre.text;
+              _nombre.text="";
 
               Navigator.push(
                 context,
@@ -315,7 +315,7 @@ Widget botonHome(BuildContext context){
           icon: Image.asset('assets/flechamainmenu.png'),
           iconSize: 80.0,
           onPressed: () {
-          _userController.text="";
+          _nombre.text="";
 
             a=false;
             Navigator.push(
@@ -351,10 +351,3 @@ Widget botonHome(BuildContext context){
 
 
 
-void _changeList(String player, int time, int pp) async{
-  SharedPreferences prefs = await SharedPreferences.getInstance(); //para activar la persistencia
-
-  prefs.setInt("time", time); //almacenar en tiempo de ejecucion datos persistencia
-  prefs.setInt("pp", pp); //almacenar en tiempo de ejecucion datos persistencia
-  prefs.setString("player", player); //almacenar...
-}
