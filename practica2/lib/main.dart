@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:practica2/login.dart';
+import 'package:practica2/mainMenu.dart';
+//import 'package:audioplayer/audioplayer.dart';
 
 //PANTALLA DE INICIO
 void main() {
@@ -27,6 +29,7 @@ class Inicio extends StatefulWidget{
 }
 
 class _InicioState extends State<Inicio>{
+
   @override
   Widget build(BuildContext context){
     return Scaffold(//estructura pantalla: AppBar y body
@@ -37,6 +40,7 @@ class _InicioState extends State<Inicio>{
 }
 
 Widget portada(BuildContext context){
+    //final audio = AudioPlayer();
   return Container(
     decoration: BoxDecoration(
       image: DecorationImage(image: AssetImage('assets/fondoinicio.png'), //aquí va la imagen de fondo
@@ -47,15 +51,24 @@ Widget portada(BuildContext context){
         child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset('assets/logo.png'),
-            OutlinedButton(
+            TextButton(
               onPressed: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => login()),
             );
               },
-              child: Text("JUGAR"),
+              child: Image.asset('assets/logo.png'),
+            ),
+            TextButton(
+              onPressed: () {
+                //audio.play('assets/musica.mp3');
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => mainMenu()),
+            );
+              },
+              child: Text("Pantalla de Inicio"),
             )
           ],
         )

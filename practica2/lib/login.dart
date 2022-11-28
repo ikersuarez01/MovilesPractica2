@@ -1,6 +1,32 @@
+
+
+
+
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:practica2/main.dart';
+import 'package:practica2/mainMenu.dart';
+import 'package:flutter/services.dart';
+import 'package:practica2/login.dart';
+import 'dart:async';
+import 'dart:math';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:practica2/user.dart';
+
+
+
+
+bool a=false;
+TextEditingController _nombre = TextEditingController();
+String finalUserName="";
+bool changeCat=false;
+//List<int> boxList = List<int>.generate(5, (index) => 0, growable: false);
+
 
 class login extends StatefulWidget{
+
+
   login({super.key});
 
   @override
@@ -8,93 +34,318 @@ class login extends StatefulWidget{
 }
 
 class _loginState extends State<login>{
+
+  TextEditingController _nombre = TextEditingController();
+  TextEditingController _puntuacion = TextEditingController();
+  TextEditingController _tiempo = TextEditingController();
+  late SharedPreferences sharedPreferences;
+  @override
+
+
+void initState(){
+    super.initState(); //sin esto no funciona la persistencia, no se actualiza el estado al entrar
+ setState(() {
+   cargarDatosIniciales();
+ });
+
+  }
+
+
+ // }
   @override
   Widget build(BuildContext context){
-    return Scaffold(//estructura pantalla: AppBar y body
-      body: body(),
+   /* if(changeCat)
+    {*/
+
+      return Scaffold(//estructura pantalla: AppBar y body
+
+        body: body(context),
 
       );
+
+    }
+
+
+
+
+
+
+
+ void cargarDatosIniciales() async{
+     sharedPreferences = await SharedPreferences.getInstance();
+    //_changeList(players.first, time.first, pp.first);
+  //  Partida(players.first,time.first,pp.first);
+   Map<String,dynamic> jsondatais = jsonDecode(sharedPreferences.getString('userdata')!);
+
+   user User= user.fromJson(jsondatais);
+
+   if(jsondatais.isNotEmpty){
+     _nombre.value=TextEditingValue(text: User.nombre);
+     _puntuacion.value=TextEditingValue(text: User.puntuacion);
+     _tiempo.value=TextEditingValue(text: User.tiempo);
+   }
+  }
+
+  void guardarDatos() {
+    user User = user(_nombre.text, _puntuacion.text, _tiempo.text);
+  String userdata= jsonEncode(User);
+  print(userdata);
+sharedPreferences.setString('userdata', userdata);
+
 
   }
 }
 
-Widget body(){
-  return  Container(
-    decoration: BoxDecoration(
-      image: DecorationImage(image: AssetImage('assets/login_gato_saludando.png'),
-          fit: BoxFit.contain
-      )
-    ),
-      child: Center(
-        child: Column(
-          mainAxisAlignment :MainAxisAlignment.center,
-          mainAxisSize: MainAxisSize.max,
-          children: <Widget>[
 
 
 
-            botonContinuar(),
-            usernameSpace(),
-          ],
-
-      ),
-      ),
 
 
-  );
+Widget body(BuildContext context){
 
-}
+    return  Container(
 
-Widget username(){
-      return Container(
-        child: Text("Inicia Sesión",
-          style: TextStyle(
-              color: Colors.black,
-              fontSize: 25.0,
-              fontWeight: FontWeight.bold,
-  ),
-  ),
-  );
-
-}
-
-Widget usernameSpace(){
-  return Container(
-padding: EdgeInsets.only(left: 230,right: 90),
-      child: TextField(
-        textAlign: TextAlign.center,
-          decoration: InputDecoration(
-              hintText: "Usuario",
-              fillColor: Colors.white30,
-              filled: false
+      decoration: BoxDecoration(
+          image: DecorationImage(image: AssetImage('assets/Mesa de trabajo 1.png'),
+            fit: BoxFit.cover,
           )
       ),
+
+
+
+      child: Center(
+
+        child: Column(
+
+          mainAxisAlignment :MainAxisAlignment.start,
+
+          children: <Widget>[
+
+            Row(
+
+                children: [
+
+                  botonHome(context),
+                  botonOpciones(context),
+
+
+                ]
+            ),
+
+            usernameSpace(context),
+            botonContinuar(context),
+            messageText(),
+
+
+
+
+
+          ],
+
+        ),
+      ),
+
+
+    );
+
+  }
+
+
+
+Widget usernameSpace(BuildContext context){
+  return Container(
+padding: EdgeInsets.only(left: 90,right: 90,top:375),
+      child: TextFormField(
+        controller: _nombre,
+        textAlign: TextAlign.start,
+       // textInputAction: TextInputAction.values.,
+          keyboardType: TextInputType.name,
+
+
+    style: TextStyle(
+      fontFamily: 'Counter new'
+    ),
+          maxLength: 10,
+
+          decoration: InputDecoration(
+
+              hintText: "Usuario *",
+              fillColor: Colors.black,
+              filled: false
+          )
+
+      ),
   );
 
 }
 
-Widget botonContinuar(){
+Widget botonContinuar(BuildContext context){
+
   return Container(
-padding: EdgeInsets.only(top:250,left: 140),
-    child: OutlinedButton(
-      onPressed: () {
 
-        //Navigator.push(
-        // context,
-        //   MaterialPageRoute(builder: (context) => login()),
-        // );
-      },
+padding: EdgeInsets.only(top:0,left: 300),
 
-      child: Text("CONTINUAR"),
+    child: Column(
+      children: <Widget> [
+        IconButton(
+          icon: Image.asset('assets/flecha_login.png'),
+          iconSize: 150.0,
+          onPressed: () {
+            
+
+
+            if(_nombre.text.length>=3){
+            a=false;
+              finalUserName=_nombre.text;
+              _nombre.text="";
+
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => mainMenu()),
+
+              );
+            a=false;
+            }else{
+             a=true;
+
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => login()),
+
+              );
+
+            }
+
+          },
+
+
+            )
+
+
+      ],
+
+
+
+
+
+
+      ),
+
+
+
+
+    );
+
+
+
+}
+
+Widget messageText(){
+  if(a){
+
+    return Text('PLEASE ENTER AT LEAST 3 CHARACTERS',
+      selectionColor: Colors.pink,
+      textScaleFactor: 1.5,
+      textAlign: TextAlign.center,
+
+    );
+
+  }else{
+    return Text('');
+  }
+
+}
+
+
+
+
+Widget botonOpciones(BuildContext context){
+
+  return Container(
+
+    padding: EdgeInsets.only(top:0,left: 100),
+
+    child: Column(
+      children: <Widget> [
+        IconButton(
+          icon: Image.asset('assets/botonajustes.png'),
+          iconSize: 80.0,
+          onPressed: () {
+
+
+
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => mainMenu()),
+              );
+            },
+
+
+
+
+        ),
+
+
+      ],
+
+
+
+
+
 
     ),
 
+
+
+
   );
 
+
+
 }
+Widget botonHome(BuildContext context){
+
+  return Container(
+
+    padding: EdgeInsets.only(top:0,right: 100),
+
+    child: Column(
+      children: <Widget> [
+        IconButton(
+          icon: Image.asset('assets/flechamainmenu.png'),
+          iconSize: 80.0,
+          onPressed: () {
+          _nombre.text="";
+
+            a=false;
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => MyApp()),
+            );
+          },
 
 
 
+        ),
+
+
+      ],
+
+
+
+
+
+
+    ),
+
+
+
+
+  );
+
+
+
+}
 
 
 
