@@ -2,6 +2,8 @@
 
 
 
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:practica2/main.dart';
 import 'package:practica2/mainMenu.dart';
@@ -11,6 +13,9 @@ import 'dart:async';
 import 'dart:math';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:practica2/user.dart';
+
+
+
 
 bool a=false;
 TextEditingController _userController = TextEditingController();
@@ -33,6 +38,7 @@ class _loginState extends State<login>{
   TextEditingController _nombre = TextEditingController();
   TextEditingController _puntuacion = TextEditingController();
   TextEditingController _tiempo = TextEditingController();
+  late SharedPreferences sharedPreferences;
   @override
 
 
@@ -66,13 +72,18 @@ void initState(){
 
 
  void cargarDatosIniciales() async{
-    SharedPreferences a = await SharedPreferences.getInstance();
+     sharedPreferences = await SharedPreferences.getInstance();
     //_changeList(players.first, time.first, pp.first);
   //  Partida(players.first,time.first,pp.first);
   }
 
   void guardarDatos() {
     user User = user(_nombre.text, _puntuacion.text, _tiempo.text);
+  String userdata= jsonEncode(User);
+  print(userdata);
+sharedPreferences.setString('userdata', userdata);
+
+
   }
 }
 
