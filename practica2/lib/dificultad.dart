@@ -53,12 +53,18 @@ Widget body(BuildContext context){
           ),
         ),
         Container(
-          height: MediaQuery.of(context).size.height * 0.25, //dificultad
+          height: MediaQuery.of(context).size.height * 0.15, //dificultad
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset('assets/dificultad.png'),
             ],
+          ),
+          ),
+           Container(
+          height: MediaQuery.of(context).size.height * 0.1, //espacio
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
           ),
           ),
           Container(
