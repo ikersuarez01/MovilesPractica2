@@ -75,6 +75,15 @@ void initState(){
      sharedPreferences = await SharedPreferences.getInstance();
     //_changeList(players.first, time.first, pp.first);
   //  Partida(players.first,time.first,pp.first);
+   Map<String,dynamic> jsondatais = jsonDecode(sharedPreferences.getString('userdata')!);
+
+   user User= user.fromJson(jsondatais);
+
+   if(jsondatais.isNotEmpty){
+     _nombre.value=TextEditingValue(text: User.nombre);
+     _puntuacion.value=TextEditingValue(text: User.puntuacion);
+     _tiempo.value=TextEditingValue(text: User.tiempo);
+   }
   }
 
   void guardarDatos() {
