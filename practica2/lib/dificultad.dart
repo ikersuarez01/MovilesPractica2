@@ -54,11 +54,15 @@ Widget body(BuildContext context){
         ),
         Container(
           height: MediaQuery.of(context).size.height * 0.25, //dificultad
-          width: MediaQuery.of(context).size.width * 0.5,
+          //width: MediaQuery.of(context).size.width,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image.asset('assets/dificultad.png'),
+              SizedBox(
+                width: 250,
+                child: Image.asset('assets/dificultad.png'),
+              )
+              
             ],
           ),
           ),
