@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:practica2/MainGame.dart';
 import 'package:practica2/ajustes.dart';
 import 'package:practica2/dificultad.dart';
+import 'package:audioplayer/audioplayer.dart';
 
 class mainMenu extends StatefulWidget{
   mainMenu({super.key});
@@ -13,7 +14,7 @@ class mainMenu extends StatefulWidget{
 }
 
 class _mainMenuState extends State<mainMenu>{
-  //final audioPlayer = audioPlayer();
+  
   @override
   Widget build(BuildContext context){
     return Scaffold(//estructura pantalla: AppBar y body
