@@ -34,6 +34,7 @@ Widget body(BuildContext context){
         children: [
           Container(
             height: MediaQuery.of(context).size.height * 0.15,
+            width: MediaQuery.of(context).size.width,
             child: Row(
             //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -59,6 +60,7 @@ Widget body(BuildContext context){
         ),
         Container(
           height: MediaQuery.of(context).size.height * 0.1, //titulo juego
+          width: MediaQuery.of(context).size.width,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
@@ -67,10 +69,12 @@ Widget body(BuildContext context){
           ),
           ),  
           Container(
-            height: MediaQuery.of(context).size.height * 0.25
+            height: MediaQuery.of(context).size.height * 0.25,
+            width: MediaQuery.of(context).size.width,
           ),
           Container(
             height: MediaQuery.of(context).size.height * 0.30, //boton jugar
+            width: MediaQuery.of(context).size.width,
             child: Row (
               mainAxisAlignment: MainAxisAlignment.center,
               children:[
@@ -86,6 +90,7 @@ Widget body(BuildContext context){
           ),
           Container(
             height: MediaQuery.of(context).size.height * 0.20, //boton salir
+            width: MediaQuery.of(context).size.width,
             child: Row (
               mainAxisAlignment: MainAxisAlignment.center,
               children:[

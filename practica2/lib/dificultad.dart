@@ -29,6 +29,7 @@ Widget body(BuildContext context){
       children: [
         Container(
             height: MediaQuery.of(context).size.height * 0.15,
+            width: MediaQuery.of(context).size.width,
             child: Row(
             //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -54,7 +55,7 @@ Widget body(BuildContext context){
         ),
         Container(
           height: MediaQuery.of(context).size.height * 0.25, //dificultad
-          //width: MediaQuery.of(context).size.width,
+          width: MediaQuery.of(context).size.width,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -68,6 +69,7 @@ Widget body(BuildContext context){
           ),
           Container(
             height: MediaQuery.of(context).size.height * 0.2, //boton facil
+            width: MediaQuery.of(context).size.width,
             child: Row (
               mainAxisAlignment: MainAxisAlignment.center,
               children:[
@@ -85,6 +87,7 @@ Widget body(BuildContext context){
           ),
           Container(
             height: MediaQuery.of(context).size.height * 0.2, //boton medio
+            width: MediaQuery.of(context).size.width,
             child: Row (
               mainAxisAlignment: MainAxisAlignment.center,
               children:[
@@ -102,6 +105,7 @@ Widget body(BuildContext context){
           ),
           Container(
             height: MediaQuery.of(context).size.height * 0.2, //boton dificil
+            width: MediaQuery.of(context).size.width,
             child: Row (
               mainAxisAlignment: MainAxisAlignment.center,
               children:[
