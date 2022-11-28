@@ -64,7 +64,11 @@ Widget body(BuildContext context){
           child: Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              Image.asset('assets/titulojuego.png'),
+              SizedBox(
+                width: 300,
+                child:Image.asset('assets/titulojuego.png'),
+              ),
+              
             ],
           ),
           ),  
