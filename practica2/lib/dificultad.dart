@@ -59,7 +59,7 @@ Widget body(BuildContext context){
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SizedBox(
-                width: 250,
+                width: 350,
                 child: Image.asset('assets/dificultad.png'),
               )
               

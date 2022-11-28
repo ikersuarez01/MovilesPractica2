@@ -18,6 +18,11 @@ class _ajustesState extends State<ajustes>{
 
 Widget body(BuildContext context){
   return Container(
+     decoration: BoxDecoration(
+      image: DecorationImage(image: AssetImage('assets/fondomenuinicial.png'),
+          fit: BoxFit.cover
+      )
+    ),
     child: 
     Column(
       children: [
@@ -45,7 +50,10 @@ Widget body(BuildContext context){
               onPressed: () {
                 //Boton de nivel de volumen
               },
-              child: Image.asset('assets/levelvolume.png'),
+              child: SizedBox(
+                width: 350,
+                child: Image.asset('assets/levelvolume.png'),
+              )
               )] ),
           ), 
         Container(
