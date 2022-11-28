@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:practica2/MainGame.dart';
 import 'package:practica2/ajustes.dart';
 import 'package:practica2/dificultad.dart';
-import 'package:audioplayer/audioplayer.dart';
+//import 'package:audioplayer/audioplayer.dart';
 
 class mainMenu extends StatefulWidget{
   mainMenu({super.key});
