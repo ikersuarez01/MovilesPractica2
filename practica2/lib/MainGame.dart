@@ -3,8 +3,11 @@
 import 'dart:async';
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:practica2/EndGame.dart';
+import 'package:practica2/ListaTest.dart';
 import 'dart:math';
 import 'main.dart';
+import 'EndGame.dart';
 
 //#endregion
 
@@ -21,8 +24,10 @@ List<int> boxList = List<int>.generate(numBoxes, (index) => 0, growable: false);
 var random = Random();
 
 int puntuacion = 0;
-
+int tiempo = 0;
 int vidas = 3;
+
+bool stopTimer= false;
 //#endregion
 
 //#region Inicio Pantalla
@@ -69,6 +74,7 @@ class _InicioState extends State<Inicio> {
 
     }
 
+
     @override
     void initState() {
       super.initState();
@@ -82,6 +88,7 @@ class _InicioState extends State<Inicio> {
         Duration(seconds: random.nextInt(3)),
             (Timer t) {
               setState(() {
+                if(stopTimer) t.cancel();
                 if(boxList[aux] == 1){
                   RestaVida();
                 }
@@ -101,10 +108,12 @@ class _InicioState extends State<Inicio> {
               });
         },
       );
+
       final periodicTimer2 = Timer.periodic(
         Duration(seconds: random.nextInt(4)),
             (Timer t) {
           setState(() {
+            if(stopTimer) t.cancel();
             if(secondBox){
               if(boxList[aux2] == 1){
                 RestaVida();
@@ -123,6 +132,16 @@ class _InicioState extends State<Inicio> {
                 boxList[aux2] = 3;
               }
             }
+          });
+        },
+      );
+
+      final timerReloj = Timer.periodic(
+        Duration(seconds: 1),
+            (Timer t) {
+          setState(() {
+            if(stopTimer) t.cancel();
+            tiempo++;
           });
         },
       );
@@ -235,9 +254,24 @@ class _InicioState extends State<Inicio> {
 
     void RestaVida(){
       if(vidas <= 0){
-        print('HAS MUERTO');
+        if(!stopTimer){
+          stopTimer = true;
+          ListaRanking.add(new Partida('A', puntuacion, tiempo));
+          ListaRanking.sort((a,b) => a.puntuacion > b.puntuacion?a.puntuacion:b.puntuacion);
+          Navigator.push(context, MaterialPageRoute(builder: (context) {
+            return EndGame(puntuacion, tiempo);
+          }));
+        }
       } else {
         vidas--;
+        if(vidas <= 0){
+          if(!stopTimer){
+            stopTimer = true;
+            Navigator.push(context, MaterialPageRoute(builder: (context) {
+              return EndGame(puntuacion, tiempo);
+            }));
+          }
+        }
       }
     }
     //#endregion

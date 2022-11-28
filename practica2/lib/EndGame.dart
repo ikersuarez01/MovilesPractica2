@@ -3,28 +3,50 @@ import 'dart:async';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'dart:math';
+import 'main.dart';
+import 'ListaTest.dart';
+
+//#endregion
+
+
+//#region Variables
+final ListaRanking = List<Partida>.filled(9, new Partida('', 0, 0));
+
+
 //#endregion
 
 //#region Init pantalla
-void main(){
-  runApp(EndGame());
 
+/*void main(){
+  runApp(EndGame(99,100));
+}*/
+
+void AddRanking(){
+  ListaRanking.add(new Partida('IKER', 0, 78));
+  ListaRanking.add(new Partida('ERIS', 1459, 12));
+  ListaRanking.add(new Partida('ED', 69, 69));
+  
 }
 
 class EndGame extends StatelessWidget {
-  const EndGame({Key? key}) : super(key: key);
-
+  int puntuacion;
+  int tiempo;
+  EndGame(this.puntuacion, this.tiempo);
+  
+  
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "Puntuacion endgame",
-      home: Inicio(),
+      home: Inicio(puntuacion,tiempo),
     );
   }
 }
 
 class Inicio extends StatefulWidget {
-  const Inicio({Key? key}) : super(key: key);
+  int puntuacion;
+  int tiempo;
+  Inicio(this.puntuacion, this.tiempo);
 
   @override
   State<Inicio> createState() => _InicioState();
@@ -34,6 +56,7 @@ class Inicio extends StatefulWidget {
 
 //#region Creacion Pantalla
 class _InicioState extends State<Inicio> {
+
 
   //#region Barra Botones Home , Ajustes, Ranking
   SizedBox BotonesTopBar(){
@@ -47,7 +70,9 @@ class _InicioState extends State<Inicio> {
             child: IconButton(
               icon: Image.asset('assets/home.png'),
               iconSize: 100,
-              onPressed: (){},
+              onPressed: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const MyApp()));
+              },
             ),
           ),
           Container(
@@ -70,12 +95,14 @@ class _InicioState extends State<Inicio> {
   }
   //#endregion
 
+  //#region Reloj y Puntuacion
   SizedBox RelojBar(){
     return SizedBox(
       height: MediaQuery.of(context).size.height * 0.16,
+      width: MediaQuery.of(context).size.width * 0.70,
       child: Row(
           mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Container(
               alignment: Alignment.center,
@@ -83,7 +110,7 @@ class _InicioState extends State<Inicio> {
                 children: [
                   Image(image: AssetImage('assets/reloj.png')),
                   Text(
-                      '0:22',
+                      (widget.tiempo/60).floor().toString() + ':' + (widget.tiempo-(widget.tiempo/60).floor()*60).toString(),
                       style: TextStyle(fontSize: 30, fontFamily: 'Courier New', fontWeight: FontWeight.bold)
                   )
                 ],
@@ -97,7 +124,7 @@ class _InicioState extends State<Inicio> {
                       image: AssetImage('assets/numerogatos.png')
                   ),
                   Text(
-                      'x5',
+                      widget.puntuacion.toString(),
                       style: TextStyle(fontSize: 30, fontFamily: 'Courier New', fontWeight: FontWeight.bold)
                   )
                 ],
@@ -107,7 +134,9 @@ class _InicioState extends State<Inicio> {
         ),
       );
   }
+  //endregion
 
+  //#region Gato Sprite
   Container GatoWin(){
     return Container(
         decoration: BoxDecoration(
@@ -118,7 +147,9 @@ class _InicioState extends State<Inicio> {
         )
     );
   }
+  //#endregion
 
+  //#region BUILD
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -137,9 +168,9 @@ class _InicioState extends State<Inicio> {
           ],
         )
       )
-
     );
   }
+  //endregion
 }
 //#endregion
 
