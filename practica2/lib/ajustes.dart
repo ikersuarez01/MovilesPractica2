@@ -18,6 +18,60 @@ class _ajustesState extends State<ajustes>{
 
 Widget body(BuildContext context){
   return Container(
-    child: Text("Pantalla Ajustes"),
+    child: 
+    Column(
+      children: [
+        Container(
+            height: MediaQuery.of(context).size.height * 0.15,
+            child: Row (
+              mainAxisAlignment: MainAxisAlignment.start,
+              children:[
+              TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: Image.asset('assets/flechamainmenu.png'),
+              )] ),
+          ),
+        Container(
+            height: MediaQuery.of(context).size.height * 0.15
+          ),
+        Container(
+            height: MediaQuery.of(context).size.height * 0.3,
+            child: Row (
+              mainAxisAlignment: MainAxisAlignment.center,
+              children:[
+              TextButton(
+              onPressed: () {
+                //Boton de nivel de volumen
+              },
+              child: Image.asset('assets/levelvolume.png'),
+              )] ),
+          ), 
+        Container(
+            height: MediaQuery.of(context).size.height * 0.20,
+            child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              TextButton(
+              onPressed: () {
+                //silenciar
+              },
+              child: Image.asset('assets/soundoff.png')
+            ),
+              TextButton(
+              onPressed: () {
+                //poner sonido
+              },
+              child: Image.asset('assets/soundon.png')
+            ),
+            ],
+          ),
+        ),
+        Container(
+            height: MediaQuery.of(context).size.height * 0.2
+          ), 
+      ],
+    )
   );
 }
