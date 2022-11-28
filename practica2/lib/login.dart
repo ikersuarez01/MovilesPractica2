@@ -37,13 +37,13 @@ class _loginState extends State<login>{
   @override
 
 
-void initState(){
+/*void initState(){
     super.initState(); //sin esto no funciona la persistencia, no se actualiza el estado al entrar
  setState(() {
    cargarDatosAlInicio();
  });
 
-  }
+  }*/
 
 
  // }
@@ -66,11 +66,11 @@ void initState(){
 
 
 
-  cargarDatosAlInicio() async{
+ /* cargarDatosAlInicio() async{
     SharedPreferences prefs = await SharedPreferences.getInstance();
     _changeList(players.first, time.first, pp.first);
   //  Partida(players.first,time.first,pp.first);
-  }
+  }*/
 }
 
 
