@@ -154,7 +154,7 @@ Widget body(BuildContext context){
 
 Widget usernameSpace(BuildContext context){
   return Container(
-padding: EdgeInsets.only(left: 90,right: 90,top:345),
+padding: EdgeInsets.only(left: 90,right: 90,top:375),
       child: TextFormField(
         controller: _userController,
         textAlign: TextAlign.start,
