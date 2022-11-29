@@ -3,11 +3,13 @@ import 'dart:async';
 import 'dart:ui';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
+import 'package:practica2/ajustes.dart';
 import 'dart:math';
 import 'main.dart';
 import 'ListaTest.dart';
 import 'user.dart';
 import 'Ranking.dart';
+import 'ajustes.dart';
 
 //#endregion
 
@@ -87,7 +89,10 @@ class _InicioState extends State<Inicio> {
             child: IconButton(
               icon: Image.asset('assets/boton_ajustes.png'),
               iconSize: 100,
-              onPressed: (){ui.play(AssetSource('botones.mp3'));},
+              onPressed: (){
+                ui.play(AssetSource('botones.mp3'));
+                Navigator.push(context,MaterialPageRoute(builder: (context) => ajustes()));
+                },
             ),
           )
         ],

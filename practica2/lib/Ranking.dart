@@ -7,6 +7,7 @@ import 'dart:math';
 import 'main.dart';
 import 'ListaTest.dart';
 import 'EndGame.dart';
+import 'ajustes.dart';
 
 //#endregion
 
@@ -71,6 +72,7 @@ class _InicioState extends State<Inicio> {
               iconSize: 100,
               onPressed: (){
                 ui.play(AssetSource('botones.mp3'));
+                Navigator.push(context,MaterialPageRoute(builder: (context) => ajustes()));
               },
             ),
           )

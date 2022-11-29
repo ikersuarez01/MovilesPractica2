@@ -10,6 +10,7 @@ import 'dart:async';
 import 'dart:math';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:practica2/user.dart';
+import 'ajustes.dart';
 
 bool a = false;
 TextEditingController _nombre = TextEditingController();
@@ -107,9 +108,8 @@ class _loginState extends State<login> {
             onPressed: () {
               ui.play(AssetSource('botones.mp3'));
               Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => mainMenu()),
-              );
+                  context,
+                  MaterialPageRoute(builder: (context) => ajustes()));
             },
           ),
         ],
