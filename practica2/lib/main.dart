@@ -4,6 +4,7 @@ import 'package:practica2/mainMenu.dart';
 import 'package:audioplayer/audioplayer.dart';
 
 //PANTALLA DE INICIO
+final audio = AudioPlayer();
 void main() {
   runApp(const MyApp());
 }
@@ -40,7 +41,7 @@ class _InicioState extends State<Inicio>{
 }
 
 Widget portada(BuildContext context){
-    final audio = AudioPlayer();
+
     return Container(
     decoration: BoxDecoration(
       image: DecorationImage(image: AssetImage('assets/fondoinicio.png'), //aquí va la imagen de fondo
