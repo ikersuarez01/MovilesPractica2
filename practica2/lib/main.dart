@@ -41,7 +41,7 @@ class _InicioState extends State<Inicio>{
 
 Widget portada(BuildContext context){
     final audio = AudioPlayer();
-  return Container(
+    return Container(
     decoration: BoxDecoration(
       image: DecorationImage(image: AssetImage('assets/fondoinicio.png'), //aquí va la imagen de fondo
       fit: BoxFit.cover)),
@@ -62,7 +62,7 @@ Widget portada(BuildContext context){
             ),
             TextButton(
               onPressed: () {
-                audio.play('assets/musica.mp3');
+                audio.play('assets/music.mp3');
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => mainMenu()),
