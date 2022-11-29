@@ -27,7 +27,7 @@ class _loginState extends State<login> {
   //#region Actualizar Texto
   void ActualizarTexto(){
     setState(() {
-      if(_nombre.text.length > 3){
+      if(_nombre.text.length >= 3){
         changeCat= true;
       } else {
         changeCat= false;
@@ -170,11 +170,11 @@ class _loginState extends State<login> {
           child: Column(
             children: <Widget>[
               botonHomeOpciones(),
-              Container(
-                alignment: Alignment.center,
-                  height: MediaQuery.of(context).size.height * 0.50),
-              usernameSpace(context),
-              botonContinuar(context),
+                Container(
+                  alignment: Alignment.center,
+                    height: MediaQuery.of(context).size.height * 0.50),
+                usernameSpace(context),
+                botonContinuar(context),
               Expanded(child: messageText()),
             ],
           ),

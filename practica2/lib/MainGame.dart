@@ -26,7 +26,7 @@ var random = Random();
 
 int puntuacion = 0;
 int tiempo = 0;
-int vidas = 3;
+int vidas = 0;
 
 List<int> boxList = List<int>.generate(numBoxes, (index) => 0, growable: false);
 
@@ -41,6 +41,13 @@ bool stopTimer= false;
 
 //#region Crear Escenario
   void CrearEscenario(){
+
+    vidas = 3;
+    puntuacion = 0;
+    tiempo = 0;
+
+    stopTimer = false;
+
     switch(dif){
       case 0:{
         boxHeight = 150.0;
@@ -120,7 +127,6 @@ class _InicioState extends State<Inicio> {
 
 
   //#region Funciones Juego
-
 
     //#region Cargar Y Guardar Datos
 
@@ -353,19 +359,28 @@ class _InicioState extends State<Inicio> {
       }
     //#endregion
 
-  //#endregion
-
     //#region Sumar  y restar vidas
 
-    void SumaVida(){
-      if(vidas >= 3){
-        return;
-      } else {
-        vidas++;
-      }
+  void SumaVida(){
+    if(vidas >= 3){
+      return;
+    } else {
+      vidas++;
     }
+  }
 
-    void RestaVida(){
+  void RestaVida(){
+    if(vidas <= 0){
+      if(!stopTimer){
+        stopTimer = true;
+        cargarDatosIniciales();
+        guardarDatos();
+        Navigator.push(context, MaterialPageRoute(builder: (context) {
+          return EndGame(puntuacion, tiempo);
+        }));
+      }
+    } else {
+      vidas--;
       if(vidas <= 0){
         if(!stopTimer){
           stopTimer = true;
@@ -375,89 +390,77 @@ class _InicioState extends State<Inicio> {
             return EndGame(puntuacion, tiempo);
           }));
         }
-      } else {
-        vidas--;
-        if(vidas <= 0){
-          if(!stopTimer){
-            stopTimer = true;
-            cargarDatosIniciales();
-            guardarDatos();
-            Navigator.push(context, MaterialPageRoute(builder: (context) {
-              return EndGame(puntuacion, tiempo);
-            }));
-          }
-        }
       }
     }
-    //#endregion
-
+  }
+  //#endregion
 
     //#region Barra Botones Home y Ajustes
-    SizedBox BotonesTopBar(){
-      return SizedBox(
-        height: MediaQuery.of(context).size.height * 0.2,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          mainAxisSize: MainAxisSize.max,
-          children: <Widget>[
-            Container(
-              child: IconButton(
-                icon: Image.asset('assets/home.png'),
-                iconSize: 100,
-                onPressed: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => const MyApp()));
-                },
-              ),
+  SizedBox BotonesTopBar(){
+    return SizedBox(
+      height: MediaQuery.of(context).size.height * 0.2,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisSize: MainAxisSize.max,
+        children: <Widget>[/*
+          Container(
+            child: IconButton(
+              icon: Image.asset('assets/home.png'),
+              iconSize: 100,
+              onPressed: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const MyApp()));
+              },
             ),
-            Container(
-              child: IconButton(
-                icon: Image.asset('assets/boton_ajustes.png'),
-                iconSize: 100,
-                onPressed: (){},
-              ),
-            )
-          ],
-        ),
-      );
-    }
+          ),
+          Container(
+            child: IconButton(
+              icon: Image.asset('assets/boton_ajustes.png'),
+              iconSize: 100,
+              onPressed: (){},
+            ),
+          )
+        */],
+      ),
+    );
+  }
   //#endregion
 
     //#region Barra Puntuacion y vidas
-    SizedBox ScoreBar(){
-      return SizedBox(
-          height: MediaQuery.of(context).size.height * 0.15,
-          child: Container(
-              decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage('assets/scoreingame.png'),
-                    fit:BoxFit.cover,
-                  )
-              ),
-              child: Padding(
-                  padding: EdgeInsets.only(top:20,left: MediaQuery.of(context).size.width * 0.1,right: MediaQuery.of(context).size.width * 0.1),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    mainAxisSize: MainAxisSize.max,
-                    children: <Widget>[
-                      Text(
-                          '$vidas',
-                          style: TextStyle(fontSize: 40, fontFamily: 'Courier New', fontWeight: FontWeight.bold)
-                      ),
-                      Text(
-                          '$puntuacion',
-                          style: TextStyle(fontSize: 40, fontFamily: 'Courier New', fontWeight: FontWeight.bold)
-                      )
+  SizedBox ScoreBar(){
+    return SizedBox(
+        height: MediaQuery.of(context).size.height * 0.15,
+        child: Container(
+            decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('assets/scoreingame.png'),
+                  fit:BoxFit.cover,
+                )
+            ),
+            child: Padding(
+                padding: EdgeInsets.only(top:20,left: MediaQuery.of(context).size.width * 0.1,right: MediaQuery.of(context).size.width * 0.1),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisSize: MainAxisSize.max,
+                  children: <Widget>[
+                    Text(
+                        '$vidas',
+                        style: TextStyle(fontSize: 40, fontFamily: 'Courier New', fontWeight: FontWeight.bold)
+                    ),
+                    Text(
+                        '$puntuacion',
+                        style: TextStyle(fontSize: 40, fontFamily: 'Courier New', fontWeight: FontWeight.bold)
+                    )
 
-                    ],
-                  )
-              )
-          )
-      );
-    }
+                  ],
+                )
+            )
+        )
+    );
+  }
 
-    //#endregion
+  //#endregion
 
-
+  //#endregion
 
   //#endregion
 
