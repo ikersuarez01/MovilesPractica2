@@ -63,10 +63,10 @@ Widget portada(BuildContext context){
             TextButton(
               onPressed: () {
                 audio.play('assets/music.mp3');
-                Navigator.push(
+                /*Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => mainMenu()),
-            );
+            );*/
               },
               child: Text("Pantalla de Inicio"),
             )
