@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:practica2/login.dart';
 import 'package:practica2/mainMenu.dart';
-import 'package:just_audio/just_audio.dart';
+import 'package:soundpool/soundpool.dart';
 
-final player = AudioPlayer();
-final duration = player.setUrl(           // Load a URL
-    'assets/music.mp3'); 
 
 //PANTALLA DE INICIO
-final audio = AudioPlayer();
 void main() {
   runApp(const MyApp());
 }
@@ -58,6 +55,7 @@ Widget portada(BuildContext context){
           children: [
             TextButton(
               onPressed: () {
+                _sound("assets/music.mp3");
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => login()),
@@ -67,8 +65,7 @@ Widget portada(BuildContext context){
             ),
             TextButton(
               onPressed: () {
-                player.play(); 
-                //audio.play('assets/music.mp3');
+
                 /*Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => mainMenu()),
@@ -82,6 +79,15 @@ Widget portada(BuildContext context){
          );
 
 
+      }
+      
+      Future<void> _sound(ruta) async {
+        Soundpool pool = Soundpool(streamType: StreamType.notification);
+
+    int soundId = await rootBundle.load(ruta).then((ByteData soundData) {
+                  return pool.load(soundData);
+                });
+    int streamId = await pool.play(soundId);
       }
 
 /*TextButton(
