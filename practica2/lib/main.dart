@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:practica2/login.dart';
 import 'package:practica2/mainMenu.dart';
-import 'package:audioplayer/audioplayer.dart';
+import 'package:just_audio/just_audio.dart';
+
+final player = AudioPlayer();
+final duration = player.setUrl(           // Load a URL
+    'assets/music.mp3'); 
 
 //PANTALLA DE INICIO
 void main() {
@@ -40,7 +44,7 @@ class _InicioState extends State<Inicio>{
 }
 
 Widget portada(BuildContext context){
-    final audio = AudioPlayer();
+    //final audio = AudioPlayer();
     return Container(
     decoration: BoxDecoration(
       image: DecorationImage(image: AssetImage('assets/fondoinicio.png'), //aquí va la imagen de fondo
@@ -62,7 +66,8 @@ Widget portada(BuildContext context){
             ),
             TextButton(
               onPressed: () {
-                audio.play('assets/music.mp3');
+                player.play(); 
+                //audio.play('assets/music.mp3');
                 /*Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => mainMenu()),
