@@ -5,12 +5,14 @@ import 'package:flutter/material.dart';
 import 'dart:math';
 import 'main.dart';
 import 'ListaTest.dart';
+import 'user.dart';
+import 'Ranking.dart';
 
 //#endregion
 
 
 //#region Variables
-final ListaRanking = List<Partida>.filled(9, new Partida('', 0, 0));
+List <user> ListaRanking = List<user>.generate(9, (index) => new user('', '0', '0'),growable: true );
 
 
 //#endregion
@@ -20,13 +22,6 @@ final ListaRanking = List<Partida>.filled(9, new Partida('', 0, 0));
 /*void main(){
   runApp(EndGame(99,100));
 }*/
-
-void AddRanking(){
-  ListaRanking.add(new Partida('IKER', 0, 78));
-  ListaRanking.add(new Partida('ERIS', 1459, 12));
-  ListaRanking.add(new Partida('ED', 69, 69));
-  
-}
 
 class EndGame extends StatelessWidget {
   int puntuacion;
@@ -79,7 +74,9 @@ class _InicioState extends State<Inicio> {
             child: IconButton(
               icon: Image.asset('assets/ranking.png'),
               iconSize: 150,
-              onPressed: (){},
+              onPressed: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const Ranking()));
+              },
             ),
           ),
           Container(

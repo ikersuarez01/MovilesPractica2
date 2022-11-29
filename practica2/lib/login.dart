@@ -1,9 +1,5 @@
-
-
-
-
 import 'dart:convert';
-
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:practica2/main.dart';
 import 'package:practica2/mainMenu.dart';
@@ -14,338 +10,186 @@ import 'dart:math';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:practica2/user.dart';
 
-
-
-
-bool a=false;
+bool a = false;
 TextEditingController _nombre = TextEditingController();
-String finalUserName="";
-bool changeCat=false;
-//List<int> boxList = List<int>.generate(5, (index) => 0, growable: false);
+String finalUserName = "";
+bool changeCat = false;
 
-
-class login extends StatefulWidget{
-
-
+class login extends StatefulWidget {
   login({super.key});
 
   @override
   _loginState createState() => _loginState();
 }
 
-class _loginState extends State<login>{
-
-  TextEditingController _nombre = TextEditingController();
-  TextEditingController _puntuacion = TextEditingController();
-  TextEditingController _tiempo = TextEditingController();
-  late SharedPreferences sharedPreferences;
-  @override
-
-
-void initState(){
-    super.initState(); //sin esto no funciona la persistencia, no se actualiza el estado al entrar
- setState(() {
-   cargarDatosIniciales();
- });
-
+class _loginState extends State<login> {
+  //#region Actualizar Texto
+  void ActualizarTexto(){
+    setState(() {
+      if(_nombre.text.length > 3){
+        changeCat= true;
+      } else {
+        changeCat= false;
+      }
+    });
   }
+  //#endregion
 
-
- // }
-  @override
-  Widget build(BuildContext context){
-   /* if(changeCat)
-    {*/
-
-      return Scaffold(//estructura pantalla: AppBar y body
-
-        body: body(context),
-
-      );
-
-    }
-
-
-
-
-
-
-
- void cargarDatosIniciales() async{
-     sharedPreferences = await SharedPreferences.getInstance();
-    //_changeList(players.first, time.first, pp.first);
-  //  Partida(players.first,time.first,pp.first);
-   Map<String,dynamic> jsondatais = jsonDecode(sharedPreferences.getString('userdata')!);
-
-   user User= user.fromJson(jsondatais);
-
-   if(jsondatais.isNotEmpty){
-     _nombre.value=TextEditingValue(text: User.nombre);
-     _puntuacion.value=TextEditingValue(text: User.puntuacion);
-     _tiempo.value=TextEditingValue(text: User.tiempo);
-   }
-  }
-
-  void guardarDatos() {
-    user User = user(_nombre.text, _puntuacion.text, _tiempo.text);
-  String userdata= jsonEncode(User);
-  print(userdata);
-sharedPreferences.setString('userdata', userdata);
-
-
-  }
-}
-
-
-
-
-
-
-Widget body(BuildContext context){
-
-    return  Container(
-
-      decoration: BoxDecoration(
-          image: DecorationImage(image: AssetImage('assets/Mesa de trabajo 1.png'),
-            fit: BoxFit.cover,
-          )
-      ),
-
-
-
-      child: Center(
-
-        child: Column(
-
-          mainAxisAlignment :MainAxisAlignment.start,
-
-          children: <Widget>[
-
-            Row(
-
-                children: [
-
-                  botonHome(context),
-                  botonOpciones(context),
-
-
-                ]
-            ),
-
-            usernameSpace(context),
-            botonContinuar(context),
-            messageText(),
-
-
-
-
-
-          ],
-
-        ),
-      ),
-
-
-    );
-
-  }
-
-
-
-Widget usernameSpace(BuildContext context){
-  return Container(
-padding: EdgeInsets.only(left: 90,right: 90,top:375),
+  //#region Username space
+  Widget usernameSpace(BuildContext context) {
+    return Container(
+      height: MediaQuery.of(context).size.height * 0.06,
+      padding: EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.24, right:MediaQuery.of(context).size.width * 0.20 ),
       child: TextFormField(
-        controller: _nombre,
-        textAlign: TextAlign.start,
-       // textInputAction: TextInputAction.values.,
-          keyboardType: TextInputType.name,
-
-
-    style: TextStyle(
-      fontFamily: 'Counter new'
-    ),
-          maxLength: 10,
-
-          decoration: InputDecoration(
-
-              hintText: "Usuario *",
-              fillColor: Colors.black,
-              filled: false
-          )
-
-      ),
-  );
-
-}
-
-Widget botonContinuar(BuildContext context){
-
-  return Container(
-
-padding: EdgeInsets.only(top:0,left: 300),
-
-    child: Column(
-      children: <Widget> [
-        IconButton(
-          icon: Image.asset('assets/flecha_login.png'),
-          iconSize: 150.0,
-          onPressed: () {
-            
-
-
-            if(_nombre.text.length>=3){
-            a=false;
-              finalUserName=_nombre.text;
-              _nombre.text="";
-
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => mainMenu()),
-
-              );
-            a=false;
-            }else{
-             a=true;
-
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => login()),
-
-              );
-
-            }
-
+          controller: _nombre,
+          onChanged: (_nombre){
+            ActualizarTexto();
           },
-
-
-            )
-
-
-      ],
-
-
-
-
-
-
-      ),
-
-
-
-
+          textAlign: TextAlign.start,
+          keyboardType: TextInputType.name,
+          style: TextStyle(fontFamily: 'Counter new'),
+          maxLength: 10,
+          decoration: InputDecoration(
+              hintText: "Username *", fillColor: Colors.black, filled: false)),
     );
-
-
-
-}
-
-Widget messageText(){
-  if(a){
-
-    return Text('PLEASE ENTER AT LEAST 3 CHARACTERS',
-      selectionColor: Colors.pink,
-      textScaleFactor: 1.5,
-      textAlign: TextAlign.center,
-
-    );
-
-  }else{
-    return Text('');
   }
+  //#endregion
 
-}
+  //#region Boton Continuar
+  Widget botonContinuar(BuildContext context) {
+    return Container(
+      height: MediaQuery.of(context).size.height * 0.1,
+      alignment: Alignment.center,
+      padding: EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.65),
+      child: IconButton(
+        icon: Image.asset('assets/flecha_login.png'),
+        iconSize: 150.0,
+        onPressed: () {
+          if(changeCat){
+            finalUserName = _nombre.text;
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => mainMenu()),
+            );
+          }
+        },
+      )
+    );
+  }
+  //#endregion
 
+  //#region Texto Advertencia
+  Widget messageText() {
+    if (!changeCat) {
+      return Text(
+        'PLEASE ENTER AT LEAST 3 CHARACTERS',
+        selectionColor: Colors.pink,
+        textScaleFactor: 1.5,
+        textAlign: TextAlign.center,
+      );
+    } else {
+      return Text('');
+    }
+  }
+  //#endregion
 
-
-
-Widget botonOpciones(BuildContext context){
-
-  return Container(
-
-    padding: EdgeInsets.only(top:0,left: 100),
-
-    child: Column(
-      children: <Widget> [
-        IconButton(
-          icon: Image.asset('assets/botonajustes.png'),
-          iconSize: 80.0,
-          onPressed: () {
-
-
-
+  //#region boton opciones
+  Widget botonOpciones(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.only(top: 0, left: 100),
+      child: Column(
+        children: <Widget>[
+          IconButton(
+            icon: Image.asset('assets/botonajustes.png'),
+            iconSize: 80.0,
+            onPressed: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => mainMenu()),
               );
             },
+          ),
+        ],
+      ),
+    );
+  }
+  //#endregion
 
+  //#region Botonhome
+  Widget botonHomeOpciones() {
+    return SizedBox(
+      height: MediaQuery.of(context).size.height * 0.15,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisSize: MainAxisSize.max,
+        children: <Widget>[
+          Container(
+            child: IconButton(
+              icon: Image.asset('assets/home.png'),
+              iconSize: 100,
+              onPressed: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const MyApp()));
+              },
+            ),
+          ),
+          Container(
+            child: IconButton(
+              icon: Image.asset('assets/boton_ajustes.png'),
+              iconSize: 100,
+              onPressed: (){},
+            ),
+          )
+        ],
+      ),
+    );
+  }
+  //#endregion
 
+  //#region BODY
+  Widget body() {
+    return Container(
+        height: MediaQuery.of(context).size.height,
+        width:  MediaQuery.of(context).size.width,
+        decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('assets/fondo_1_claro.png'),
+              fit: BoxFit.cover,
+            )),
+        child:Container(
+          height: MediaQuery.of(context).size.height,
+          width:  MediaQuery.of(context).size.width,
+          decoration: BoxDecoration(
+              image: DecorationImage(
+                image: changeCat?AssetImage('assets/login_gato_saludando.png'):AssetImage('assets/login_gato_pensativo.png'),
+                fit: BoxFit.contain,
+              )),
+          child: Column(
+            children: <Widget>[
+              botonHomeOpciones(),
+              Container(
+                alignment: Alignment.center,
+                  height: MediaQuery.of(context).size.height * 0.50),
+              usernameSpace(context),
+              botonContinuar(context),
+              Expanded(child: messageText()),
+            ],
+          ),
+        )
+    );
+  }
+  //#endregion
 
+  @override
+  Widget build(BuildContext context) {
 
-        ),
-
-
-      ],
-
-
-
-
-
-
-    ),
-
-
-
-
-  );
-
-
-
+    return Scaffold(
+      resizeToAvoidBottomInset: false,
+      //estructura pantalla: AppBar y body
+      body: body(),
+    );
+  }
 }
-Widget botonHome(BuildContext context){
 
-  return Container(
-
-    padding: EdgeInsets.only(top:0,right: 100),
-
-    child: Column(
-      children: <Widget> [
-        IconButton(
-          icon: Image.asset('assets/flechamainmenu.png'),
-          iconSize: 80.0,
-          onPressed: () {
-          _nombre.text="";
-
-            a=false;
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => MyApp()),
-            );
-          },
-
-
-
-        ),
-
-
-      ],
-
-
-
-
-
-
-    ),
-
-
-
-
-  );
-
-
-
-}
 
 
 

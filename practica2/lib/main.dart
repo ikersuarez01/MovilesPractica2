@@ -60,16 +60,6 @@ Widget portada(BuildContext context){
               },
               child: Image.asset('assets/logo.png'),
             ),
-            TextButton(
-              onPressed: () {
-                //audio.play('assets/musica.mp3');
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => mainMenu()),
-            );
-              },
-              child: Text("Pantalla de Inicio"),
-            )
           ],
         )
          ),

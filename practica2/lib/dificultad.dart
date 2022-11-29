@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:practica2/MainGame.dart';
 import 'package:practica2/ajustes.dart';
 
+int dif = 1;
+
 class dificultad extends StatefulWidget{
   dificultad({super.key});
 
@@ -75,6 +77,7 @@ Widget body(BuildContext context){
               children:[
               TextButton(
               onPressed: () {
+                dif = 0;
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => PantallaJuego()),
@@ -93,6 +96,7 @@ Widget body(BuildContext context){
               children:[
               TextButton(
               onPressed: () {
+                dif = 1;
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => PantallaJuego()),
@@ -111,6 +115,7 @@ Widget body(BuildContext context){
               children:[
               TextButton(
               onPressed: () {
+                dif = 2;
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => PantallaJuego()),

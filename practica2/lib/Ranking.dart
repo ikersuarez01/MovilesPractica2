@@ -153,14 +153,14 @@ class _InicioState extends State<Inicio> {
         Container(
           alignment: Alignment.center,
           child: Text(
-              ListaRanking[listaIndex].puntuacion.toString(),
+              ListaRanking[listaIndex].puntuacion,
               style: TextStyle(fontSize: fontTableSize, fontFamily: 'Courier New', fontWeight: FontWeight.bold)
           ),
         ),
         Container(
           alignment: Alignment.center,
           child: Text(
-              ListaRanking[listaIndex].tiempo.toString(),
+              ListaRanking[listaIndex].tiempo,
               style: TextStyle(fontSize: fontTableSize, fontFamily: 'Courier New', fontWeight: FontWeight.bold)
           ),
         )
