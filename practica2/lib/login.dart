@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:ui';
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:practica2/main.dart';
 import 'package:practica2/mainMenu.dart';
@@ -67,6 +68,7 @@ class _loginState extends State<login> {
         onPressed: () {
           if(changeCat){
             finalUserName = _nombre.text;
+            ui.play(AssetSource('botones.mp3'));
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => mainMenu()),
@@ -103,6 +105,7 @@ class _loginState extends State<login> {
             icon: Image.asset('assets/botonajustes.png'),
             iconSize: 80.0,
             onPressed: () {
+              ui.play(AssetSource('botones.mp3'));
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => mainMenu()),
@@ -128,6 +131,7 @@ class _loginState extends State<login> {
               icon: Image.asset('assets/home.png'),
               iconSize: 100,
               onPressed: (){
+                ui.play(AssetSource('botones.mp3'));
                 Navigator.push(context, MaterialPageRoute(builder: (context) => const MyApp()));
               },
             ),

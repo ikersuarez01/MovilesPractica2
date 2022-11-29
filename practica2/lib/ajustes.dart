@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'main.dart';
 class ajustes extends StatefulWidget{
   ajustes({super.key});
 
@@ -68,12 +68,17 @@ Widget body(BuildContext context){
               TextButton(
               onPressed: () {
                 //silenciar
+                player.setVolume(0.0);
+                ui.setVolume(0.0);
               },
               child: Image.asset('assets/soundoff.png')
             ),
               TextButton(
               onPressed: () {
                 //poner sonido
+                player.setVolume(1.0);
+                ui.setVolume(1.0);
+
               },
               child: Image.asset('assets/soundon.png')
             ),

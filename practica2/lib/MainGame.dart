@@ -2,6 +2,7 @@
 import 'dart:convert';
 import 'dart:async';
 import 'dart:ui';
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:practica2/EndGame.dart';
 import 'package:practica2/ListaTest.dart';
@@ -159,6 +160,7 @@ class _InicioState extends State<Inicio> {
     void initState() {
 
       super.initState();
+      player.play(AssetSource('gameplay.mp3'));
       Timer(Duration(seconds: 10),(){
         setState(() {
           secondBox = true;
@@ -246,16 +248,19 @@ class _InicioState extends State<Inicio> {
           }
           break;
           case 1: {
+            ui.play(AssetSource('maullido.mp3'));
             puntuacion++;
             boxList[index] = 0;
           }
           break;
           case 2:{
+            ui.play(AssetSource('perro.mp3'));
             RestaVida();
             boxList[index] = 0;
           }
           break;
           case 3:{
+            ui.play(AssetSource('pez.mp3'));
             SumaVida();
             boxList[index]= 0;
           }

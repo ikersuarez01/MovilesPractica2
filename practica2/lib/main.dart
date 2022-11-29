@@ -1,8 +1,12 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:practica2/login.dart';
 import 'package:practica2/mainMenu.dart';
-//import 'package:audioplayer/audioplayer.dart';
+import 'package:audioplayers/audioplayers.dart';
 
+
+final player = AudioPlayer();
+final ui = AudioPlayer();
 //PANTALLA DE INICIO
 void main() {
   runApp(const MyApp());
@@ -53,6 +57,10 @@ Widget portada(BuildContext context){
           children: [
             TextButton(
               onPressed: () {
+                ui.setVolume(1.0);
+                ui.play(AssetSource('botones.mp3'));
+                player.play(AssetSource('music.mp3'));
+                player.setVolume(1.0);
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => login()),

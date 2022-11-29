@@ -1,6 +1,7 @@
 //#region imports
 import 'dart:async';
 import 'dart:ui';
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
 import 'main.dart';
@@ -66,6 +67,7 @@ class _InicioState extends State<Inicio> {
               icon: Image.asset('assets/home.png'),
               iconSize: 100,
               onPressed: (){
+                ui.play(AssetSource('botones.mp3'));
                 Navigator.push(context, MaterialPageRoute(builder: (context) => const MyApp()));
               },
             ),
@@ -75,6 +77,8 @@ class _InicioState extends State<Inicio> {
               icon: Image.asset('assets/ranking.png'),
               iconSize: 150,
               onPressed: (){
+                ui.play(AssetSource('botones.mp3'));
+                player.play(AssetSource('music.mp3'));
                 Navigator.push(context, MaterialPageRoute(builder: (context) => const Ranking()));
               },
             ),
@@ -83,7 +87,7 @@ class _InicioState extends State<Inicio> {
             child: IconButton(
               icon: Image.asset('assets/boton_ajustes.png'),
               iconSize: 100,
-              onPressed: (){},
+              onPressed: (){ui.play(AssetSource('botones.mp3'));},
             ),
           )
         ],

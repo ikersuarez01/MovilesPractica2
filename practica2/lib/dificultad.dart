@@ -1,6 +1,9 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:practica2/MainGame.dart';
 import 'package:practica2/ajustes.dart';
+
+import 'main.dart';
 
 int dif = 1;
 
@@ -39,12 +42,14 @@ Widget body(BuildContext context){
             children: [
               TextButton(
               onPressed: () {
+                ui.play(AssetSource('botones.mp3'));
                 Navigator.pop(context); //vuelve a pantalla anterior
               },
               child: Image.asset('assets/flechamainmenu.png')
             ),
               TextButton(
               onPressed: () {
+                ui.play(AssetSource('botones.mp3'));
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => ajustes()), //navega a pantalla de ajustes
@@ -77,6 +82,7 @@ Widget body(BuildContext context){
               children:[
               TextButton(
               onPressed: () {
+                ui.play(AssetSource('botones.mp3'));
                 dif = 0;
                 Navigator.push(
                   context,
@@ -96,6 +102,7 @@ Widget body(BuildContext context){
               children:[
               TextButton(
               onPressed: () {
+                ui.play(AssetSource('botones.mp3'));
                 dif = 1;
                 Navigator.push(
                   context,
@@ -115,6 +122,7 @@ Widget body(BuildContext context){
               children:[
               TextButton(
               onPressed: () {
+                ui.play(AssetSource('botones.mp3'));
                 dif = 2;
                 Navigator.push(
                   context,
