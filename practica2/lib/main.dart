@@ -55,7 +55,7 @@ Widget portada(BuildContext context){
           children: [
             TextButton(
               onPressed: () {
-                _sound("assets/music.mp3");
+                _sound("assets/botones.mp3");
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => login()),
@@ -88,6 +88,7 @@ Widget portada(BuildContext context){
                   return pool.load(soundData);
                 });
     int streamId = await pool.play(soundId);
+    print("sonido");
       }
 
 /*TextButton(
